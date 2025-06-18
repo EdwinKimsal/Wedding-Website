@@ -1,0 +1,165 @@
+/* Default Styling */
+*{
+    /* -webkit-appearance: none;
+    -moz-appearance: none; */
+    /* appearance: none; */
+    margin: 0.4vw;
+    padding: none;
+    border-radius: 0;
+    font-size: clamp(1.8vh, 5.5rem, 1.2vw);
+    font-family: "Times New Roman", Times, serif;
+    text-decoration: none;
+    font-weight: normal;
+    color: #572600;
+    background-color: #FFF2E8;
+}
+
+/* Styling for Title */
+.center{
+    text-align: center;
+    align-self: center;
+    align-items: center;
+}
+
+/* Styling for labels */
+label{
+    background-color: transparent;
+}
+
+/* Styling for text areas */
+textarea{
+    resize: none;
+    background-color: transparent;
+    width: 70%;
+    font-size: .7rem;
+    padding: .3rem;
+        border-style: solid;
+    border-width: 0.085rem;
+    border-radius: 0.2rem;
+    border-color: #572600;
+}
+
+textarea::selection{
+    resize: none;
+    background-color: transparent;
+    width: 70%;
+    font-size: .7rem;
+    padding: .3rem;
+    border-style: solid;
+    border-width: 0.085rem;
+    border-radius: 0.2rem;
+    border-color: #572600;
+}
+
+/* Styling for buttons */
+button{
+    background-color: transparent;
+    font-size: .8rem;
+    padding: .3rem;
+    border-style: solid;
+    border-width: 0.085rem;
+    border-radius: 0.2rem;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+/* Styling for inputs */
+input{
+    background-color: transparent;
+    cursor: pointer;
+    height: 0.7rem;
+    width: 0.7rem;
+}
+
+/* Styling for required fields (adding astrick) */
+.required:after{
+    content: " *";
+    color: red;
+}
+
+/* Styling for headers */
+h2{
+    display: inline;
+    background-color: transparent;
+}
+
+/* Styling for person boxes */
+.pers_box{
+    background-color: #FFF2E8;
+
+    width: 55%;
+    padding: 1.2rem;
+    margin: 1.6rem auto;
+    margin-bottom: 0rem;
+
+    border-style: solid;
+    border-width: .12rem;
+    border-color: #A18104;
+    border-radius: 1rem;
+    
+}
+
+/* Styling for delete button */
+.close_button{
+    background-color: #FFF2E8;
+    border-style: solid;
+    border-color: #572600;
+    color: #572600;
+}
+
+.close_button:hover{
+    border-color: #A18104;
+    background-color: #A18104;
+    color: #FFF2E8;
+}
+
+/* Styling for adding new person button */
+.pers_button{
+    display: flex;
+    margin: 0.8rem auto;
+    margin-top: 0;
+
+    background-color: #FFF2E8;
+    border-color: #572600;
+    color: #572600;
+}
+
+.pers_button:hover{
+    border-color: #A18104;
+    background-color: #A18104;
+    color: #FFF2E8;
+}
+
+/* Styling for optional box */
+.opt_box{
+    background-color: #FFF2E8;
+    width: 55%;
+    padding: 1.2rem;
+    margin: 0.8rem auto;
+    margin-top: 0;
+
+    color: #C19828;
+
+    border-style: solid;
+    border-width: .12rem;
+    border-color: #C19828;
+    border-radius: 1rem;
+}
+
+/* Styling for submit button */
+.sub_button{
+    display: flex;
+    margin: 0rem auto;
+    margin-top: 0.8rem;
+
+    border-color: #572600;
+    color: #572600;
+}
+
+.sub_button:hover{
+    border-color: #C19828;
+    background-color: #C19828;
+    color: #FFF2E8;
+}
