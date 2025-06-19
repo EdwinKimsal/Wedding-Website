@@ -11,7 +11,8 @@
     <body>
         <!-- Top Header -->
         <header>
-            <h1 class="center">RSVP Form</h1>
+            <br>
+            <h1 class="center">RSVP Form | MM/DD/YYYY</h1>
         </header>
 
         <!-- General div -->
@@ -30,7 +31,7 @@
                     <!-- Attending Question -->
                     <label for="attQ" class="required">Will you be attending?</label><br>
                     
-                    <input id="yes" name="attBool" type="radio" value="Yes">
+                    <input id="yes" name="attBool" type="radio" value="Yes" addevent="add_meal()">
                     <label for="yes">Yes</label>
                     <br>
                 
@@ -46,12 +47,7 @@
             
             <!-- Optional Fields -->
             <form class="opt_box">
-                <h2>Gift & Email Address</h2><hr>
-
-                <label for="gift">Gift:</label><br>
-                <textarea id="gift" rows="1"></textarea>
-                <br><br>
-
+                <h2>Email Address</h2><hr>
                 <label for="email">Email:</label><br>
                 <textarea id="email" rows="1"></textarea>
             </form>
@@ -59,6 +55,9 @@
 
             <!-- Submission button -->
             <button id="submit" class="sub_button" type="submit" onclick="submitForm()">Submit</button>
-        </main><br>
+        </main><br><br><br><br><br><br><br>
+
+        <!-- Call function -->
+         <script>init()</script>
      </body>
 </html>
