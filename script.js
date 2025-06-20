@@ -5,6 +5,7 @@ function init(){
     document.getElementById("no").addEventListener("click", remove_meal);
 }
 
+
 // Adding a new person to list function
 function addPers(){
     // Get people section
@@ -47,6 +48,7 @@ function addPers(){
 
     name_text_box.id = "name";
     name_text_box.rows = "1";
+    name_text_box.className = "req";
 
     newPers.append(name_label);
     newPers.append(document.createElement("br"));
@@ -66,11 +68,13 @@ function addPers(){
     yes_button.type = "radio";
     yes_button.value = "Yes";
     yes_button.id = "yes";
-    yes_button.name = "attBool";
+    yes_button.name = "attQ";
+    yes_button.className = "req";
     no_button.type = "radio";
     no_button.value = "No";
     no_button.id = "no";
-    no_button.name = "attBool";
+    no_button.name = "attQ";
+    no_button.className = "req";
 
     newPers.append(att_label);
     newPers.append(document.createElement("br"));
@@ -91,7 +95,6 @@ function addPers(){
 
 // Add meal function
 function add_meal(){
-    console.log(this.parentElement.lastChild.innerHTML);
     // Add meal if not already there
     if (this.parentElement.lastChild.innerHTML == undefined || this.parentElement.lastChild.innerHTML == "" || this.parentElement.lastChild.innerHTML == "No"){
         // Create needed elements
@@ -116,31 +119,38 @@ function add_meal(){
 
         meal_1.type = "radio";
         meal_1.id = "chicken";
-        meal_1.value = "chicken";
+        meal_1.value = "Chicken";
         meal_1.name = "meal";
+        meal_1.className = "req";
+        meal_1.addEventListener("click", restrictions);
         meal_1_label.innerHTML = "Chicken";
         meal_1_label.htmlFor = "chicken";
 
         meal_2.type = "radio";
         meal_2.id = "steak";
-        meal_2.value = "steak"
+        meal_2.value = "Steak"
         meal_2.name = "meal";
+        meal_2.className = "req";
+        meal_2.addEventListener("click", restrictions);
         meal_2_label.innerHTML = "Steak";
         meal_2_label.htmlFor = "steak";
 
         meal_3.type = "radio";
         meal_3.id = "fish";
-        meal_3.value = "fish";
+        meal_3.value = "Fish";
         meal_3.name = "meal";
+        meal_3.className = "req";
+        meal_3.addEventListener("click", restrictions);
         meal_3_label.innerHTML = "Fish";
         meal_3_label.htmlFor = "fish";
 
         meal_other.type = "radio";
         meal_other.id = "other";
-        meal_other.value = "other";
+        meal_other.value = "Other";
         meal_other.name = "meal";
+        meal_other.className = "req";
         meal_other.addEventListener("click", restrictions);
-        meal_other_label.innerHTML = "Other"
+        meal_other_label.innerHTML = "Have Dietary Restrictions"
         meal_other_label.htmlFor = "other";
 
         // Append to HTML
@@ -158,45 +168,56 @@ function add_meal(){
         meal.append(document.createElement("br"));
         meal.append(meal_other);
         meal.append(meal_other_label);
-        meal.append(document.createElement("br"));
         this.parentElement.append(meal);
     }
 }
 
+
 // Function to remove the meal option if needed
 function remove_meal(){
-    console.log(this.parentElement.lastChild.innerHTML);
     // Remove meal if there
     if (this.parentElement.lastChild.innerHTML != undefined && this.parentElement.lastChild.innerHTML != "No"){
         this.parentElement.lastChild.remove();
     }
 }
 
+
 //  Function for adding dietary restrictions
 function restrictions(){
-    // Set constant varaibles for new elements
-    const restr_label = document.createElement("label");
-    const restr_text = document.createElement("textarea");
+    // Make sure a restriction is not already there
+    if (this.parentElement.lastChild.innerHTML == "Have Dietary Restrictions" && this.value == "Other"){
+        // Set constant varaibles for new elements
+        const restr = document.createElement("div");
+        const restr_label = document.createElement("label");
+        const restr_text = document.createElement("textarea");
 
-    // Code for lines and line breaks
-    // document.createElement("hr")
-    // document.createElement("br")
+        // Code for lines and line breaks
+        // document.createElement("hr")
+        // document.createElement("br")
 
-    // Add to new elements
-    restr_label.innerHTML = "Please specify dietary restrictions:";
-    restr_label.htmlFor = "restr";
-    restr_label.className = "required";
+        // Add to new elements
+        restr_label.innerHTML = "Please specify dietary restrictions:";
+        restr_label.htmlFor = "restr";
+        restr_label.className = "required";
 
-    restr_text.id = "restr";
-    restr_text.rows = "1";
+        restr_text.id = "restr";
+        restr_text.rows = "1";
+        restr_text.className = "req";
 
-    // Append elements to person
-    this.parentElement.append(document.createElement("br"));
-    this.parentElement.append(restr_label);
-    this.parentElement.append(document.createElement("br"));
-    this.parentElement.append(restr_text);
-    this.parentElement.append(document.createElement("br"));
+        // Append elements to person
+        restr.append(document.createElement("br"));
+        restr.append(restr_label);
+        restr.append(document.createElement("br"));
+        restr.append(restr_text);
+        restr.append(document.createElement("br"));
+        this.parentElement.append(restr);
+    }
+
+    // Remove if needed
+    else if (this.parentElement.lastChild.innerHTML != "Have Dietary Restrictions" && this.value != "other")
+        this.parentElement.lastChild.remove();
 }
+
 
 // Removing a person function
 function close(){
@@ -206,5 +227,80 @@ function close(){
 
 // Submit form function
 function submitForm(){
-    alert("Your submission has been recieved!"); // Alert user that submission has been recieved
+    // Set value dictionary
+    const val_dict = {
+        "Yes": 0.5,
+        "No": 0.5,
+        "Chicken": 0.25,
+        "Steak": 0.25,
+        "Fish": 0.25,
+        "Other": 0.25
+    }
+
+    // Create varaible for needed radio button clicks
+    var count_rad_need = 0;
+    var count_rad_have = 0;
+
+    // Create array for final response and pers
+    var final_response = [];
+    var pers = []
+
+    // Initially make form valid
+    var is_valid = true;
+
+    //  Find all required fields
+    const req_fields = document.getElementsByClassName("req");
+
+    // Iterate through all required fields
+    for (i=0; i < req_fields.length; i++){
+
+        // Code for non-radio inputs
+        if (req_fields[i].type != "radio"){
+            // Case when form is not complete
+            if (req_fields[i].value == ""){
+                is_valid = false;
+            }
+
+            // When form is still valid
+            else{
+                // Handle (pass) case for first field
+                if (i == 0){}
+
+                // Handle case for new person
+                else if (req_fields.id == "name"){
+                    final_response.push(pers);
+                    pers.length = 0;
+                }
+
+                // All cases
+                pers.push(req_fields[i].value);
+            }
+        }
+
+        // Code for radio inputs
+        else{
+            // Add to count_rad_need appropriately
+            count_rad_need += val_dict[req_fields[i].value];
+
+            // Add to count_rad_have, and pers appropriately
+            if (req_fields[i].checked){
+                count_rad_have += 1;
+                pers.push(req_fields[i].value);
+            }
+        }
+    }
+
+    // Add last person
+    final_response.push(pers);
+
+    // Check if form is valid
+    if (is_valid == true && count_rad_need == count_rad_have){
+        console.log(final_response);
+        alert("Your RSVP has been recieved!"); // Alert user that submission has been recieved
+    }
+
+    // Else form is not valud
+    else{
+        alert("Not all required fields have been filled") // ALert user that submission was not completed
+    }
 }

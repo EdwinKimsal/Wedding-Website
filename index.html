@@ -3,6 +3,7 @@
     <!-- HEAD -->
     <head>
         <title>RSVP Form</title>
+        <link rel="icon" href="Images/logo.jpg">
         <link rel="stylesheet" href="style.css">
         <script src="script.js"></script>
     </head>
@@ -12,7 +13,7 @@
         <!-- Top Header -->
         <header>
             <br>
-            <h1 class="center">RSVP Form | MM/DD/YYYY</h1>
+            <h1 class="center">RSVP Form || MM/DD/YYYY</h1>
         </header>
 
         <!-- General div -->
@@ -25,17 +26,17 @@
 
                     <!-- Name Question -->
                     <label for="name" class="required">Name:</label><br>
-                    <textarea id="name" rows="1"></textarea>
+                    <textarea id="name" name="name" class="req" rows="1"></textarea>
                     <br><br>
 
                     <!-- Attending Question -->
                     <label for="attQ" class="required">Will you be attending?</label><br>
                     
-                    <input id="yes" name="attBool" type="radio" value="Yes" addevent="add_meal()">
+                    <input id="yes" name="attQ" type="radio" value="Yes" class="req">
                     <label for="yes">Yes</label>
                     <br>
                 
-                    <input id="no" name="attBool" type="radio" value="No">
+                    <input id="no" name="attQ" type="radio" value="No" class="req">
                     <label for="no">No</label>
                     <br>
                 </form>
