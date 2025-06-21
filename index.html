@@ -2,10 +2,9 @@
 <html>
     <!-- HEAD -->
     <head>
-        <title>RSVP Form</title>
+        <title>Wedding</title>
         <link rel="icon" href="Images/logo.jpg">
         <link rel="stylesheet" href="style.css">
-        <script src="script.js"></script>
     </head>
 
     <!-- BODY -->
@@ -13,52 +12,14 @@
         <!-- Top Header -->
         <header>
             <br>
-            <h1 class="center">RSVP Form || MM/DD/YYYY</h1>
+            <h1 class="center">Wedding || MM/DD/YYYY</h1><br>
+            <hr><br>
         </header>
 
-        <!-- General div -->
-         <main>
-            <!-- People span -->
-            <span id="people">
-            <!-- Person Form -->
-                <form class="pers_box">
-                    <h2>Person</h2><hr>
-
-                    <!-- Name Question -->
-                    <label for="name" class="required">Name:</label><br>
-                    <textarea id="name" name="name" class="req" rows="1"></textarea>
-                    <br><br>
-
-                    <!-- Attending Question -->
-                    <label for="attQ" class="required">Will you be attending?</label><br>
-                    
-                    <input id="yes" name="attQ" type="radio" value="Yes" class="req">
-                    <label for="yes">Yes</label>
-                    <br>
-                
-                    <input id="no" name="attQ" type="radio" value="No" class="req">
-                    <label for="no">No</label>
-                    <br>
-                </form>
-            </span>
-
-            <!-- Add a new person button -->
-            <button id="newPers" class="pers_button" type="button" onclick="addPers()">Add New Person</button>
-            <br><br>
-            
-            <!-- Optional Fields -->
-            <form class="opt_box">
-                <h2>Email Address</h2><hr>
-                <label for="email">Email:</label><br>
-                <textarea id="email" rows="1"></textarea>
-            </form>
-            <br>
-
-            <!-- Submission button -->
-            <button id="submit" class="sub_button" type="submit" onclick="submitForm()">Submit</button>
-        </main><br><br><br><br><br><br><br>
-
-        <!-- Call function -->
-         <script>init()</script>
+        <!-- Main area -->
+        <main id="gold_box" class="center">
+            <p>Navigation Menu</p><br><hr>
+            <a href="rsvp.html"><button type="button" class="gold_button">RSVP</button></a>
+        </main>
      </body>
 </html>

@@ -243,7 +243,7 @@ function submitForm(){
 
     // Create array for final response and pers
     var final_response = [];
-    var pers = []
+    var pers = new Array;
 
     // Initially make form valid
     var is_valid = true;
@@ -253,7 +253,6 @@ function submitForm(){
 
     // Iterate through all required fields
     for (i=0; i < req_fields.length; i++){
-
         // Code for non-radio inputs
         if (req_fields[i].type != "radio"){
             // Case when form is not complete
@@ -267,9 +266,9 @@ function submitForm(){
                 if (i == 0){}
 
                 // Handle case for new person
-                else if (req_fields.id == "name"){
+                else if (req_fields[i].id == "name"){
                     final_response.push(pers);
-                    pers.length = 0;
+                    pers = new Array;
                 }
 
                 // All cases
