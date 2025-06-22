@@ -1,0 +1,1 @@
+echo "<script>console.log("SENT");</script>";

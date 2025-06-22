@@ -294,8 +294,15 @@ function submitForm(){
 
     // Check if form is valid
     if (is_valid == true && count_rad_need == count_rad_have){
-        console.log(final_response);
-        alert("Your RSVP has been recieved!"); // Alert user that submission has been recieved
+        // console.log(final_response);
+
+        // Connect to PHP
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("POST","send.php");
+        xmlhttp.send();
+
+        // Alert user that submission has been recieved
+        alert("Your RSVP has been recieved!");
     }
 
     // Else form is not valud
