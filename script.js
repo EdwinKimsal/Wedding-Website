@@ -297,12 +297,21 @@ function submitForm(){
         // console.log(final_response);
 
         // Connect to PHP
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("POST","send.php");
-        xmlhttp.send();
+        var jsonArr = JSON.stringify(final_response);
+        $.ajax({
+                type: "POST",
+                url: "send.php",
+                data: {data : jsonArr}, 
 
-        // Alert user that submission has been recieved
-        alert("Your RSVP has been recieved!");
+                // Run when connection has been made
+                success: function(data){
+                    // Log recieved values in console
+                    console.log(data);
+
+                    // Alert user that submission has been recieved
+                    alert("Your RSVP has been recieved!");
+                }
+            });
     }
 
     // Else form is not valud

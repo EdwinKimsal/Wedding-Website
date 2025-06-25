@@ -1,1 +1,10 @@
-echo "<script>console.log("SENT");</script>";
+<?php
+// Main function
+function main($data){
+    $result = $data;
+    echo $result;
+}
+
+// Call main function
+main($_POST['data']);
+?>
