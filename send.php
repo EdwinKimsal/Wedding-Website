@@ -1,8 +1,7 @@
 <?php
 // Main function
 function main($data){
-    $result = $data;
-    echo $result;
+    echo $data;
 }
 
 // Call main function
