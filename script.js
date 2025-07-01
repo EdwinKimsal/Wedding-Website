@@ -292,6 +292,9 @@ function submitForm(){
     // Add last person
     final_response.push(pers);
 
+    // Add email
+    final_response.push(document.getElementById("email").value);
+
     // Check if form is valid
     if (is_valid == true && count_rad_need == count_rad_have){
         // console.log(final_response);
