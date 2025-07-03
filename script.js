@@ -221,7 +221,8 @@ function restrictions(){
 
 // Removing a person function
 function close(){
-    this.parentElement.remove();
+    const pers = this.parentElement
+    pers.remove();
 }
 
 
@@ -297,8 +298,6 @@ function submitForm(){
 
     // Check if form is valid
     if (is_valid == true && count_rad_need == count_rad_have){
-        // console.log(final_response);
-
         // Connect to PHP
         var jsonArr = JSON.stringify(final_response);
         $.ajax({
@@ -308,9 +307,6 @@ function submitForm(){
 
                 // Run when connection has been made
                 success: function(data){
-                    // Log recieved values in console
-                    console.log(data);
-
                     // Alert user that submission has been recieved
                     alert("Your RSVP has been recieved!");
                 }
