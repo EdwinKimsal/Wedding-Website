@@ -41,7 +41,7 @@ function main($input){
             mysqli_query($conn, $command);
 
             // Run python file
-            shell_exec("python main.py" .$table);
+            shell_exec("python main.py " .$table);
         }
     }
 }

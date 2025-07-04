@@ -1,26 +1,36 @@
 # Import(s)
-import sqlite3
+import mysql.connector
+import csv
 import sys
 
 # Main function
 def main(table):
     # Set path of database
-    path = "C:\ProgramData\MySQL\MySQL Server 8.0\Data\wedding_rsvp\guests.ibd"
+    conn = mysql.connector.connect(
+        host = "localhost",
+        user = "root",
+        password = "ABNyZ=nA9G7k",
+        database = "wedding_rsvp"
+    )
 
-    # Make connection with cursor
-    conn = sqlite3.connect(path)
-    crsr = conn.cursor()
+    # Make connection with cursor and execute command
+    with conn.cursor() as crsr:
+        crsr.execute(f"SELECT * FROM {table};")
+        results = crsr.fetchall()
 
-    # Execute command
-    results = crsr.execute(f"SELECT * FROM {table}")
-
-    # Close cursor
-    conn.close()
 
     # Create a file
-    with open("test.csv", "w") as f:
-        f.writelines(results)
+    with open("data.csv", "w", newline='') as f:
+        # Create writer
+        writer = csv.writer(f)
+
+        # Write header
+        writer.writerow(["Name", "Attending", "Meal", "Restrictions", "Email"])
+
+        # Write data
+        for row in results:
+            writer.writerow(list(row))
 
 
 # Call main function
-main(sys.arg[0])
+main(sys.argv[0])
