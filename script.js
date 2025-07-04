@@ -226,6 +226,17 @@ function close(){
 }
 
 
+// Function to clean up data
+function clean_data(data){
+    // Remove commas and make ' SQL friendly
+    data = data.replace(",", "");
+    data = data.replace("'", "''");
+
+    // Return fixed data
+    return data;
+}
+
+
 // Submit form function
 function submitForm(){
     // Set value dictionary
@@ -273,7 +284,7 @@ function submitForm(){
                 }
 
                 // All cases
-                pers.push(req_fields[i].value);
+                pers.push(clean_data(req_fields[i].value));
             }
         }
 
@@ -285,7 +296,7 @@ function submitForm(){
             // Add to count_rad_have, and pers appropriately
             if (req_fields[i].checked){
                 count_rad_have += 1;
-                pers.push(req_fields[i].value);
+                pers.push(clean_data(req_fields[i].value));
             }
         }
     }
@@ -294,7 +305,7 @@ function submitForm(){
     final_response.push(pers);
 
     // Add email
-    final_response.push(document.getElementById("email").value);
+    final_response.push(clean_data(document.getElementById("email").value));
 
     // Check if form is valid
     if (is_valid == true && count_rad_need == count_rad_have){

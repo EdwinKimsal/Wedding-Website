@@ -33,4 +33,4 @@ def main(table):
 
 
 # Call main function
-main(sys.argv[0])
+main(sys.argv[1])

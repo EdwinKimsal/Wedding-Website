@@ -12,7 +12,10 @@ function main($input){
     $conn = new mysqli($server, $username, $password, $database);
 
     // Create array for the order of col for a person
-    $order = ['pers_name', 'attending', 'meal', 'restrictions'];
+    $order = ['Attendee', 'Attending', 'Meal', 'Restrictions'];
+
+    // Create string for email message
+    $msg = "";
 
     // Iterate through each element in array
     foreach($input as $pers){
@@ -26,10 +29,11 @@ function main($input){
             foreach(range(0, count($pers)-1) as $pos){
                 $attr_com .= "$order[$pos],";
                 $val_com .= "'$pers[$pos]',";
+                $msg .= "$order[$pos]:$pers[$pos],";
             }
 
             // Add email to both commands
-            $attr_com .= "email)";
+            $attr_com .= "Email)";
             $val_com .= "'";
             $val_com .= $input[count($input)-1];
             $val_com .= "');";
@@ -39,11 +43,16 @@ function main($input){
 
             // Query
             mysqli_query($conn, $command);
-
-            // Run python file
-            shell_exec("python main.py " .$table);
         }
+
+        // Add a new line to msg
+        $msg .= ",";
     }
+
+    // Run python file for CSV and email
+    shell_exec("cd" .getcwd());
+    shell_exec("python main.py $table"); // CSV
+    shell_exec("python mail.py $msg"); // Email
 }
 
 // Call main function
