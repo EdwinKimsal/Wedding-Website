@@ -1,0 +1,26 @@
+<?php
+// Main function
+function main($input){
+    // Create variables to get to the table
+    $server = "localhost";
+    $username = "root";
+    $password = "ABNyZ=nA9G7k";
+    $database = "wedding_rsvp";
+    $table = "invite_list";
+
+    // Create connection
+    $conn = new mysqli($server, $username, $password, $database);
+    
+    // Result is SELECT statement for names and parties
+    $result = mysqli_query($conn, "SELECT Atendee, Plus_One, Rehersal, Bridal_Party, Bachelor_Party FROM $table WHERE Party = '$input';");
+
+    // Return each row
+    while ($row = mysqli_fetch_array($result, MYSQLI_NUM)){
+        printf("%s, %s, %s, %s, %s\n", $row[0], $row[1], $row[2], $row[3], $row[4]);
+    }
+}
+
+
+// Call main function
+main(json_decode($_GET['data'])); // JSON decode decodes the json data into an array
+?>
