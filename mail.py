@@ -8,6 +8,8 @@ def fix_data(data):
     data = data.replace(",", "\n\t")
     data = data.replace("\space", " ")
     data = data.replace("''", "'")
+    data = data.replace("_and_", " & ")
+    data = data.replace("_", " ")
     return data
 
 # Main function

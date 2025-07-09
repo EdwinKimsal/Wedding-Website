@@ -12,7 +12,7 @@ function main(){
     $conn = new mysqli($server, $username, $password, $database);
 
     // Result is SELECT statement for names and parties
-    $result = mysqli_query($conn, "SELECT Atendee, Party FROM $table");
+    $result = mysqli_query($conn, "SELECT Attendee, Party FROM $table");
 
     // Return each row
     while ($row = mysqli_fetch_array($result, MYSQLI_NUM)){

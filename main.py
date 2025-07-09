@@ -25,7 +25,7 @@ def main(table):
         writer = csv.writer(f)
 
         # Write header
-        writer.writerow(["Name", "Attending", "Meal", "Restrictions", "Email"])
+        writer.writerow(["Attendee", "Bachelor Party", "Bachelorette Party", "Bridal Party", "Ceremony & Rehearsal", "Reception", "Meal", "Restrictions", "Email"])
 
         # Write data
         for row in results:

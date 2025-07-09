@@ -9,6 +9,12 @@ function clean_data(data){
 }
 
 
+function redirect(){
+    // Redirect and Alert user that submission has been recieved
+    window.location.href = "/";
+    alert("Thank you! Your submission has been recieved.");
+}
+
 // Submit form function
 function submitForm(){
     // Set value dictionary
@@ -84,18 +90,15 @@ function submitForm(){
         // Connect to PHP
         var jsonArr = JSON.stringify(final_response);
         $.ajax({
-                type: "POST",
-                url: "send.php",
-                data: {data : jsonArr}, 
+            type: "POST",
+            url: "send.php",
+            data: {data : jsonArr},
 
-                // Run when connection has been made
-                success: function(data){
-                    console.log(data);
-                    // Alert user that submission has been recieved
-                    alert("Your RSVP has been recieved!");
-                }
-            });
-        console.log(final_response);
+            // Run when connection has been made
+            success: function(data){
+                redirect();
+            }
+        });
     }
 
     // Else form is not valud
@@ -118,26 +121,46 @@ function fetch_data(){
             // Create array of data with each element being a person
             var arr_data = data.split("\n");
 
+            // Create a blank map (dictionary)
+            var dict_parties = new Map();
+
             // Iterate through each person and create an array to signify name and party
-            for(i=0; i<arr_data.length; i++){
+            for (i=0; i<arr_data.length; i++){
                 arr_data[i] = arr_data[i].split(", ");
             }
 
             // Remove last element
             arr_data.pop();
 
-            // Add an event listener to the textarea
-            textarea = document.getElementById("party_input");
-            textarea.addEventListener("keyup", updated_text, false);
-            textarea.myParam = arr_data;
+            // Create this list to be a dictionary of parties and names associated with each party
+            // FIXME
+            for (i=0; i<arr_data.length; i++){
+                // If the party is new, create a key with the name, else append
+                if (dict_parties.has(arr_data[i][1])){
+                    dict_parties.get(arr_data[i][1]).push(arr_data[i][0]);
+                }
+                else{
+                    dict_parties.set(arr_data[i][1], [arr_data[i][0]]);
+                }
+            }
+
+            // Get variable for datalist
+            const datalist_var = document.getElementById("party_list");
+
+            // Iterate through the map and assign to datalist_var appropriately
+            for (const [key, value] of dict_parties){
+                // Create an option for the datalist
+                const option = document.createElement("option");
+
+                // Set values
+                option.value = key;
+                option.label = value.join(", ");
+
+                // Append to datalist
+                datalist_var.append(option);
+            }
         }
     });
-}
-
-
-// Function for event listener on textarea to display menu
-function updated_text(event){
-    console.log(event.currentTarget.myParam);
 }
 
 
