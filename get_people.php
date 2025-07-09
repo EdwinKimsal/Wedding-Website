@@ -12,11 +12,11 @@ function main($input){
     $conn = new mysqli($server, $username, $password, $database);
     
     // Result is SELECT statement for names and parties
-    $result = mysqli_query($conn, "SELECT Atendee, Plus_One, Rehersal, Bridal_Party, Bachelor_Party FROM $table WHERE Party = '$input';");
+    $result = mysqli_query($conn, "SELECT Attendee, Plus_One, Rehearsal, Bridal_Party, Bachelorette_Party, Bachelor_Party FROM $table WHERE Party = '$input';");
 
     // Return each row
     while ($row = mysqli_fetch_array($result, MYSQLI_NUM)){
-        printf("%s, %s, %s, %s, %s\n", $row[0], $row[1], $row[2], $row[3], $row[4]);
+        printf("%s, %s, %s, %s, %s, %s\n", $row[0], $row[1], $row[2], $row[3], $row[4], $row[5]);
     }
 }
 

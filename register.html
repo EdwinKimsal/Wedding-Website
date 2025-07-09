@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <!-- HEAD -->
+    <head>
+        <title>Register</title>
+        <link rel="icon" href="Images/logo.jpg">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+        <script src="jquery-3.7.1.min.js"></script>
+    </head>
+
+    <!-- BODY -->
+    <body onload="fetch_data()"></body>
+        <!-- Top Header -->
+        <header>
+            <br>
+            <h1 class="center">Register || MM/DD/YYYY</h1><br>
+            <hr><br>
+        </header>
+
+         <!-- Main area -->
+        <main id="gold_box">
+            <h2>Register Party</h2><br><hr><br>
+            <label for="party_input">Enter your last name:</label><br>
+            <textarea list="party_list" id="party_input" rows="1" maxLength="100"></textarea>
+
+            <datalist id="party_list">
+                <option value="Kimsal Family">
+                <option value="Hubler Family">
+            </datalist>
+        </main><br>
+
+        <button type="button" class="gold_button" onclick="load_form()">Registster</button></a>
+        <a href="index.html"><button class="gold_button" type="button">Home</button></a><br><br><br><br><br><br><br>
+     </body>

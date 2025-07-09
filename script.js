@@ -1,236 +1,8 @@
-// Initial function
-function init(){
-    // Add event listeners
-    document.getElementById("yes").addEventListener("click", add_meal);
-    document.getElementById("no").addEventListener("click", remove_meal);
-}
-
-
-// Adding a new person to list function
-function addPers(){
-    // Get people section
-    const people_loc = document.getElementById("people");
-
-    // Set variables of new person
-    const newPers = document.createElement("form");
-    const header = document.createElement("h2");
-
-    // Code for lines and line breaks
-    // document.createElement("hr")
-    // document.createElement("br")
-
-    const name_label = document.createElement("label");
-    const name_del = document.createElement("button");
-    const name_text_box = document.createElement("textarea");
-
-    const att_label = document.createElement("label");
-    const yes_button = document.createElement("input");
-    const yes_label = document.createElement("label");
-    const no_button = document.createElement("input");
-    const no_label = document.createElement("label");
-
-    // Create header and append to newPers div
-    header.innerHTML = "Person";
-
-    name_del.innerHTML = "Delete";
-    name_del.className = "close_button";
-    name_del.addEventListener("click", close);
-    name_del.type = "button";
-
-    newPers.append(header);
-    newPers.append(name_del);
-    newPers.append(document.createElement("hr"));
-
-    // Create Name fields and append to newPers div
-    name_label.innerHTML = "Name:";
-    name_label.htmlFor = "name";
-    name_label.className = "required";
-
-    name_text_box.id = "name";
-    name_text_box.rows = "1";
-    name_text_box.className = "req";
-
-    newPers.append(name_label);
-    newPers.append(document.createElement("br"));
-    newPers.append(name_text_box);
-    newPers.append(document.createElement("br"));
-    newPers.append(document.createElement("br"));
-    
-    // Create Attending fields and append to newPers div
-    att_label.innerHTML = "Will you be attending?";
-    att_label.htmlFor = "attQ";
-    att_label.className = "required";
-    yes_button.addEventListener("click", add_meal);
-    yes_label.innerHTML = "Yes";
-    no_button.addEventListener("click", remove_meal);
-    no_label.innerHTML = "No";
-
-    yes_button.type = "radio";
-    yes_button.value = "Yes";
-    yes_button.id = "yes";
-    yes_button.name = "attQ";
-    yes_button.className = "req";
-    no_button.type = "radio";
-    no_button.value = "No";
-    no_button.id = "no";
-    no_button.name = "attQ";
-    no_button.className = "req";
-
-    newPers.append(att_label);
-    newPers.append(document.createElement("br"));
-    newPers.append(yes_button);
-    newPers.append(yes_label);
-    newPers.append(document.createElement("br"));
-    newPers.append(no_button);
-    newPers.append(no_label);
-    newPers.append(document.createElement("br"));
-
-    // Set class of the new person
-    newPers.className = "pers_box";
-
-    // Append newPers to page
-    people_loc.appendChild(newPers);
-}
-
-
-// Add meal function
-function add_meal(){
-    // Add meal if not already there
-    if (this.parentElement.lastChild.innerHTML == undefined || this.parentElement.lastChild.innerHTML == "" || this.parentElement.lastChild.innerHTML == "No"){
-        // Create needed elements
-        const meal = document.createElement("div");
-        const meal_label = document.createElement("label");
-        const meal_1 = document.createElement("input");
-        const meal_1_label = document.createElement("label");
-        const meal_2 = document.createElement("input");
-        const meal_2_label = document.createElement("label");
-        const meal_3 = document.createElement("input");
-        const meal_3_label = document.createElement("label");
-        const meal_other = document.createElement("input");
-        const meal_other_label = document.createElement("label");
-
-        // Code for lines and line breaks
-        // document.createElement("hr")
-        // document.createElement("br")
-
-        // Add to needed elements
-        meal_label.innerHTML = "Select your meal:";
-        meal_label.className = "required"
-
-        meal_1.type = "radio";
-        meal_1.id = "chicken";
-        meal_1.value = "Chicken";
-        meal_1.name = "meal";
-        meal_1.className = "req";
-        meal_1.addEventListener("click", restrictions);
-        meal_1_label.innerHTML = "Chicken";
-        meal_1_label.htmlFor = "chicken";
-
-        meal_2.type = "radio";
-        meal_2.id = "steak";
-        meal_2.value = "Steak"
-        meal_2.name = "meal";
-        meal_2.className = "req";
-        meal_2.addEventListener("click", restrictions);
-        meal_2_label.innerHTML = "Steak";
-        meal_2_label.htmlFor = "steak";
-
-        meal_3.type = "radio";
-        meal_3.id = "fish";
-        meal_3.value = "Fish";
-        meal_3.name = "meal";
-        meal_3.className = "req";
-        meal_3.addEventListener("click", restrictions);
-        meal_3_label.innerHTML = "Fish";
-        meal_3_label.htmlFor = "fish";
-
-        meal_other.type = "radio";
-        meal_other.id = "other";
-        meal_other.value = "Other";
-        meal_other.name = "meal";
-        meal_other.className = "req";
-        meal_other.addEventListener("click", restrictions);
-        meal_other_label.innerHTML = "Have Dietary Restrictions"
-        meal_other_label.htmlFor = "other";
-
-        // Append to HTML
-        meal.append(document.createElement("br"));
-        meal.append(meal_label);
-        meal.append(document.createElement("br"));
-        meal.append(meal_1);
-        meal.append(meal_1_label);
-        meal.append(document.createElement("br"));
-        meal.append(meal_2);
-        meal.append(meal_2_label);
-        meal.append(document.createElement("br"));
-        meal.append(meal_3);
-        meal.append(meal_3_label);
-        meal.append(document.createElement("br"));
-        meal.append(meal_other);
-        meal.append(meal_other_label);
-        this.parentElement.append(meal);
-    }
-}
-
-
-// Function to remove the meal option if needed
-function remove_meal(){
-    // Remove meal if there
-    if (this.parentElement.lastChild.innerHTML != undefined && this.parentElement.lastChild.innerHTML != "No"){
-        this.parentElement.lastChild.remove();
-    }
-}
-
-
-//  Function for adding dietary restrictions
-function restrictions(){
-    // Make sure a restriction is not already there
-    if (this.parentElement.lastChild.innerHTML == "Have Dietary Restrictions" && this.value == "Other"){
-        // Set constant varaibles for new elements
-        const restr = document.createElement("div");
-        const restr_label = document.createElement("label");
-        const restr_text = document.createElement("textarea");
-
-        // Code for lines and line breaks
-        // document.createElement("hr")
-        // document.createElement("br")
-
-        // Add to new elements
-        restr_label.innerHTML = "Please specify dietary restrictions:";
-        restr_label.htmlFor = "restr";
-        restr_label.className = "required";
-
-        restr_text.id = "restr";
-        restr_text.rows = "1";
-        restr_text.className = "req";
-
-        // Append elements to person
-        restr.append(document.createElement("br"));
-        restr.append(restr_label);
-        restr.append(document.createElement("br"));
-        restr.append(restr_text);
-        restr.append(document.createElement("br"));
-        this.parentElement.append(restr);
-    }
-
-    // Remove if needed
-    else if (this.parentElement.lastChild.innerHTML != "Have Dietary Restrictions" && this.value != "other")
-        this.parentElement.lastChild.remove();
-}
-
-
-// Removing a person function
-function close(){
-    const pers = this.parentElement
-    pers.remove();
-}
-
-
 // Function to clean up data
 function clean_data(data){
     // Remove commas and make ' SQL friendly
-    data = data.replace(",", "");
-    data = data.replace("'", "''");
+    data = data.replaceAll(",", "");
+    data = data.replaceAll("'", "''");
 
     // Return fixed data
     return data;
@@ -318,14 +90,369 @@ function submitForm(){
 
                 // Run when connection has been made
                 success: function(data){
+                    console.log(data);
                     // Alert user that submission has been recieved
                     alert("Your RSVP has been recieved!");
                 }
             });
+        console.log(final_response);
     }
 
     // Else form is not valud
     else{
         alert("Not all required fields have been filled") // ALert user that submission was not completed
     }
+}
+
+
+// Function to fetch data
+function fetch_data(){
+    // Create connection to GET data
+    $.ajax({
+        type: "GET",
+        url: "get_party.php",
+        datatype: "json",
+
+        // Run when connection has been made
+        success: function(data){
+            // Create array of data with each element being a person
+            var arr_data = data.split("\n");
+
+            // Iterate through each person and create an array to signify name and party
+            for(i=0; i<arr_data.length; i++){
+                arr_data[i] = arr_data[i].split(", ");
+            }
+
+            // Remove last element
+            arr_data.pop();
+
+            // Add an event listener to the textarea
+            textarea = document.getElementById("party_input");
+            textarea.addEventListener("keyup", updated_text, false);
+            textarea.myParam = arr_data;
+        }
+    });
+}
+
+
+// Function for event listener on textarea to display menu
+function updated_text(event){
+    console.log(event.currentTarget.myParam);
+}
+
+
+// Redirect user to RSVP page with designated party
+function load_form(){
+    // Get inputed party
+    const party = document.getElementById("party_input").value;
+
+    // Get list of all parties through the datalist
+    var options = document.getElementById("party_list").options;
+    var parties = [];
+    for(i=0; i<options.length; i++){
+        parties.push(options[i].value);
+    }
+
+    // Make sure the party is valid
+    if (parties.includes(party)){
+        // Set URL and redirect user with designated party
+        const url = "rsvp.html?Party=" + party;
+        window.location.href = url;
+    }
+
+    // Else notify user
+    else{
+        alert(party + " is not a valid party. Please enter a valid party.");
+    }
+}
+
+
+// Function to create form based on party
+function create_form(){
+    // Get parameters from URL (parameters after ?)
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Get a specific parameter's value
+    const party = urlParams.get("Party");
+    
+    // Create connection to GET data
+    var jsonParty = JSON.stringify(party);
+    $.ajax({
+        type: "GET",
+        url: "get_people.php",
+        data: {data : jsonParty},
+        datatype: "json",
+
+        // Run when connection has been made
+        success: function(data){
+            // Create array of data with each element being a person
+            var arr_data = data.split("\n");
+
+            // Iterate through each person and create an element
+            for(i=0; i<arr_data.length; i++){
+                arr_data[i] = arr_data[i].split(", ");
+            }
+
+            // Remove last element
+            arr_data.pop();
+
+            // Create person questions for each person
+            for(i=0; i<arr_data.length; i++){
+                generate_pers(arr_data[i][0], arr_data[i][1], arr_data[i][2], arr_data[i][3], arr_data[i][4], arr_data[i][5]);
+            }
+        }
+    });
+}
+
+
+// Generate person questions
+function generate_pers(name, plus_one, rehearsal, bridal, bachelorette, bachelor){
+    // Get people section
+    const people_loc = document.getElementById("people");
+
+    // Set variables of new person for needed elements
+    const newPers = document.createElement("form");
+    const header = document.createElement("h2");
+
+    // Code for lines and line breaks
+    // document.createElement("hr")
+    // document.createElement("br")
+
+    // Generate name label and text box
+    // Create needed elements
+    const name_label = document.createElement("label");
+    const name_text_box = document.createElement("textarea");
+
+    // Add details to header
+    header.innerHTML = "Attendee";
+
+    // Add header and styling to new form for person
+    newPers.append(header);
+    newPers.append(document.createElement("br"));
+    newPers.append(document.createElement("hr"));
+    newPers.append(document.createElement("br"));
+
+    // Create Name fields for label
+    name_label.innerHTML = "Name:";
+    name_label.htmlFor = "name";
+    name_label.className = "required";
+
+    // Create Name fields for text box
+    name_text_box.id = "name";
+    name_text_box.rows = "1";
+    name_text_box.maxLength = "100";
+    name_text_box.className = "req";
+    name_text_box.value = name;
+    name_text_box.disabled = "True";
+
+    // Append to the new form for person
+    newPers.append(name_label);
+    newPers.append(document.createElement("br"));
+    newPers.append(name_text_box);
+    newPers.append(document.createElement("br"));
+    newPers.append(document.createElement("br"));
+
+    // Generate questions needed by calling the add attendence question
+    if (bachelor == "y"){
+        add_att("Bachelor Party", newPers, name);
+    }
+    if (bachelorette == "y"){
+        add_att("Bachelorette Party", newPers, name);
+    }
+    if (bridal == "y"){
+        add_att("Bridal Shower", newPers, name);
+    }
+    if (rehearsal == "y"){
+        add_att("Rehearsal Dinner", newPers, name);
+    }
+    add_att("Ceremony & Reception", newPers, name);
+
+    // Set class of the new person
+    newPers.className = "pers_box";
+    newPers.id = name;
+
+    // Append newPers to page
+    people_loc.appendChild(newPers);
+
+    // Add plus one by recursion, if needed
+    if (plus_one == "y"){
+        generate_pers(name + "'s Guest", "n", rehearsal, "n", "n", "n");
+    }
+}
+
+
+// Function to add attendence question to person
+function add_att(type, newPers, name){
+    // Create needed elements
+    const att_label = document.createElement("label");
+    const yes_button = document.createElement("input");
+    const yes_label = document.createElement("label");
+    const no_button = document.createElement("input");
+    const no_label = document.createElement("label");
+
+    // Create Attending fields and append to newPers div
+    att_label.innerHTML = "Will you be attending the " + type + "?";
+    att_label.htmlFor = name + "_" + type;
+    att_label.className = "required";
+    yes_label.innerHTML = "Yes";
+    yes_label.htmlFor =  name + "_" + type;
+    no_label.innerHTML = "No";
+    no_label.htmlFor =  name + "_" + type;
+
+    // Add event listener's for meals if type if Ceremony and Reception
+    if (type == "Ceremony & Reception"){
+        yes_button.addEventListener("click", add_meal);
+        no_button.addEventListener("click", remove_meal);
+    }
+
+    // Add attributes to radio buttons
+    yes_button.type = "radio";
+    yes_button.value = "Yes";
+    yes_button.name = name + "_" + type;
+    yes_button.className = "req";
+    yes_button.id = name + "_" + type;
+    no_button.type = "radio";
+    no_button.value = "No";
+    no_button.name = name + "_" + type;
+    no_button.className = "req";
+    no_button.id = type;
+
+    // Append all new elements to the new person
+    newPers.append(att_label);
+    newPers.append(document.createElement("br"));
+    newPers.append(yes_button);
+    newPers.append(yes_label);
+    newPers.append(document.createElement("br"));
+    newPers.append(no_button);
+    newPers.append(no_label);
+    newPers.append(document.createElement("br"));
+    if (type != "Ceremony & Reception"){
+        newPers.append(document.createElement("br"));
+    }
+}
+
+
+// Add meal function
+function add_meal(){
+    // Add meal if not already there
+    if (this.parentElement.lastChild.innerHTML == undefined || this.parentElement.lastChild.innerHTML == "" || this.parentElement.lastChild.innerHTML == "No" || this.parentElement.lastChild.type == "br"){
+        // Create needed elements
+        const meal = document.createElement("div");
+        const meal_label = document.createElement("label");
+        const meal_1 = document.createElement("input");
+        const meal_1_label = document.createElement("label");
+        const meal_2 = document.createElement("input");
+        const meal_2_label = document.createElement("label");
+        const meal_3 = document.createElement("input");
+        const meal_3_label = document.createElement("label");
+        const meal_other = document.createElement("input");
+        const meal_other_label = document.createElement("label");
+
+        // Code for lines and line breaks
+        // document.createElement("hr")
+        // document.createElement("br")
+
+        // Add to needed elements
+        meal_label.innerHTML = "Select your meal for the Reception:";
+        meal_label.className = "required"
+
+        meal_1.type = "radio";
+        meal_1.id = "chicken";
+        meal_1.value = "Chicken";
+        meal_1.name = "meal";
+        meal_1.className = "req";
+        meal_1.addEventListener("click", restrictions);
+        meal_1_label.innerHTML = "Chicken";
+        meal_1_label.htmlFor = "chicken";
+
+        meal_2.type = "radio";
+        meal_2.id = "steak";
+        meal_2.value = "Steak"
+        meal_2.name = "meal";
+        meal_2.className = "req";
+        meal_2.addEventListener("click", restrictions);
+        meal_2_label.innerHTML = "Steak";
+        meal_2_label.htmlFor = "steak";
+
+        meal_3.type = "radio";
+        meal_3.id = "fish";
+        meal_3.value = "Fish";
+        meal_3.name = "meal";
+        meal_3.className = "req";
+        meal_3.addEventListener("click", restrictions);
+        meal_3_label.innerHTML = "Fish";
+        meal_3_label.htmlFor = "fish";
+
+        meal_other.type = "radio";
+        meal_other.id = "other";
+        meal_other.value = "Other";
+        meal_other.name = "meal";
+        meal_other.className = "req";
+        meal_other.addEventListener("click", restrictions);
+        meal_other_label.innerHTML = "Have Dietary Restrictions"
+        meal_other_label.htmlFor = "other";
+
+        // Append to HTML
+        meal.append(document.createElement("br"));
+        meal.append(meal_label);
+        meal.append(document.createElement("br"));
+        meal.append(meal_1);
+        meal.append(meal_1_label);
+        meal.append(document.createElement("br"));
+        meal.append(meal_2);
+        meal.append(meal_2_label);
+        meal.append(document.createElement("br"));
+        meal.append(meal_3);
+        meal.append(meal_3_label);
+        meal.append(document.createElement("br"));
+        meal.append(meal_other);
+        meal.append(meal_other_label);
+        this.parentElement.append(meal);
+    }
+}
+
+
+// Function to remove the meal option if needed
+function remove_meal(){
+    // Remove meal if there
+    if (this.parentElement.lastChild.innerHTML != "" && this.parentElement.lastChild.innerHTML != "No"){
+        this.parentElement.lastChild.remove();
+    }
+}
+
+
+//  Function for adding dietary restrictions
+function restrictions(){
+    // Make sure a restriction is not already there
+    if (this.parentElement.lastChild.innerHTML == "Have Dietary Restrictions" && this.value == "Other"){
+        // Set constant varaibles for new elements
+        const restr = document.createElement("div");
+        const restr_label = document.createElement("label");
+        const restr_text = document.createElement("textarea");
+
+        // Code for lines and line breaks
+        // document.createElement("hr")
+        // document.createElement("br")
+
+        // Add to new elements
+        restr_label.innerHTML = "Please specify dietary restrictions:";
+        restr_label.htmlFor = "restr";
+        restr_label.className = "required";
+
+        restr_text.id = "restr";
+        restr_text.rows = "1";
+        restr_text.className = "req";
+
+        // Append elements to person
+        restr.append(document.createElement("br"));
+        restr.append(restr_label);
+        restr.append(document.createElement("br"));
+        restr.append(restr_text);
+        restr.append(document.createElement("br"));
+        this.parentElement.append(restr);
+    }
+
+    // Remove if needed
+    else if (this.parentElement.lastChild.innerHTML != "Have Dietary Restrictions" && this.value != "other")
+        this.parentElement.lastChild.remove();
 }

@@ -5,8 +5,9 @@ from email.mime.text import MIMEText
 
 # Function to fix data
 def fix_data(data):
-    data = data.replace(":", ": ")
     data = data.replace(",", "\n\t")
+    data = data.replace("\space", " ")
+    data = data.replace("''", "'")
     return data
 
 # Main function
