@@ -24,6 +24,9 @@ function submitForm(){
         "Chicken": 0.25,
         "Steak": 0.25,
         "Fish": 0.25,
+        "Pizza": 0.25,
+        "Chicken Tenders": 0.25,
+        "Mac & Cheese": 0.25,
         "Other": 0.25
     }
 
@@ -221,7 +224,7 @@ function create_form(){
 
             // Create person questions for each person
             for(i=0; i<arr_data.length; i++){
-                generate_pers(arr_data[i][0], arr_data[i][1], arr_data[i][2], arr_data[i][3], arr_data[i][4], arr_data[i][5]);
+                generate_pers(arr_data[i][0], arr_data[i][1], arr_data[i][2], arr_data[i][3], arr_data[i][4], arr_data[i][5], arr_data[i][6]);
             }
         }
     });
@@ -229,7 +232,7 @@ function create_form(){
 
 
 // Generate person questions
-function generate_pers(name, plus_one, rehearsal, bridal, bachelorette, bachelor){
+function generate_pers(name, plus_one, rehearsal, bridal, bachelorette, bachelor, is_kid){
     // Get people section
     const people_loc = document.getElementById("people");
 
@@ -290,9 +293,9 @@ function generate_pers(name, plus_one, rehearsal, bridal, bachelorette, bachelor
     }
     add_att("Ceremony & Reception", newPers, name);
 
-    // Set class of the new person
+    // Set class and id of the new person
     newPers.className = "pers_box";
-    newPers.id = name;
+    newPers.id = is_kid;
 
     // Append newPers to page
     people_loc.appendChild(newPers);
@@ -379,32 +382,69 @@ function add_meal(){
         meal_label.innerHTML = "Select your meal for the Reception:";
         meal_label.className = "required"
 
-        meal_1.type = "radio";
-        meal_1.id = "chicken";
-        meal_1.value = "Chicken";
-        meal_1.name = "meal";
-        meal_1.className = "req";
-        meal_1.addEventListener("click", restrictions);
-        meal_1_label.innerHTML = "Chicken";
-        meal_1_label.htmlFor = "chicken";
+        // Find is_kid from the text area
+        is_kid = parent.id;
+        console.log(is_kid);
 
-        meal_2.type = "radio";
-        meal_2.id = "steak";
-        meal_2.value = "Steak"
-        meal_2.name = "meal";
-        meal_2.className = "req";
-        meal_2.addEventListener("click", restrictions);
-        meal_2_label.innerHTML = "Steak";
-        meal_2_label.htmlFor = "steak";
+        // Meals when not a kid
+        if (is_kid == "y"){
+            meal_1.type = "radio";
+            meal_1.id = "chicken";
+            meal_1.value = "Chicken";
+            meal_1.name = "meal";
+            meal_1.className = "req";
+            meal_1.addEventListener("click", restrictions);
+            meal_1_label.innerHTML = "Chicken";
+            meal_1_label.htmlFor = "chicken";
 
-        meal_3.type = "radio";
-        meal_3.id = "fish";
-        meal_3.value = "Fish";
-        meal_3.name = "meal";
-        meal_3.className = "req";
-        meal_3.addEventListener("click", restrictions);
-        meal_3_label.innerHTML = "Fish";
-        meal_3_label.htmlFor = "fish";
+            meal_2.type = "radio";
+            meal_2.id = "steak";
+            meal_2.value = "Steak"
+            meal_2.name = "meal";
+            meal_2.className = "req";
+            meal_2.addEventListener("click", restrictions);
+            meal_2_label.innerHTML = "Steak";
+            meal_2_label.htmlFor = "steak";
+
+            meal_3.type = "radio";
+            meal_3.id = "fish";
+            meal_3.value = "Fish";
+            meal_3.name = "meal";
+            meal_3.className = "req";
+            meal_3.addEventListener("click", restrictions);
+            meal_3_label.innerHTML = "Fish";
+            meal_3_label.htmlFor = "fish";
+        }
+
+        // Else is a kid
+        else{
+            meal_1.type = "radio";
+            meal_1.id = "pizza";
+            meal_1.value = "Pizza";
+            meal_1.name = "meal";
+            meal_1.className = "req";
+            meal_1.addEventListener("click", restrictions);
+            meal_1_label.innerHTML = "Pizza";
+            meal_1_label.htmlFor = "pizza";
+
+            meal_2.type = "radio";
+            meal_2.id = "chicken_tenders";
+            meal_2.value = "Chicken Tenders"
+            meal_2.name = "meal";
+            meal_2.className = "req";
+            meal_2.addEventListener("click", restrictions);
+            meal_2_label.innerHTML = "Chicken Tenders";
+            meal_2_label.htmlFor = "chicken_tenders";
+
+            meal_3.type = "radio";
+            meal_3.id = "mac";
+            meal_3.value = "Mac & Cheese";
+            meal_3.name = "meal";
+            meal_3.className = "req";
+            meal_3.addEventListener("click", restrictions);
+            meal_3_label.innerHTML = "Mac & Cheese";
+            meal_3_label.htmlFor = "mac";
+        }
 
         meal_other.type = "radio";
         meal_other.id = "other";
