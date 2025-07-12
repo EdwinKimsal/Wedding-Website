@@ -383,11 +383,11 @@ function add_meal(){
         meal_label.className = "required"
 
         // Find is_kid from the text area
-        is_kid = parent.id;
+        is_kid = this.parentElement.id;
         console.log(is_kid);
 
         // Meals when not a kid
-        if (is_kid == "y"){
+        if (is_kid == "n"){
             meal_1.type = "radio";
             meal_1.id = "chicken";
             meal_1.value = "Chicken";
