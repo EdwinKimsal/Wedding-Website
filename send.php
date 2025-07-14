@@ -1,14 +1,31 @@
 <?php
+// Function to get values of person input
+function get_values($conn, $pers, $table){
+     // Get values of person in invite table into an array, if a guest
+    if (str_contains($pers[0], "''s Guest")){
+        $pers_name = str_replace("''s Guest", "", $pers[0]);
+        $result = mysqli_query($conn, "SELECT Rehearsal FROM $table WHERE Attendee = '$pers_name';");
+        while ($row = mysqli_fetch_array($result, MYSQLI_NUM)){
+            return ["n", "n", "n", $row[0]];
+        }
+    }
+
+    // Else
+    else{
+        $result = mysqli_query($conn, "SELECT Bachelor_Party, Bachelorette_Party, Bridal_Party, Rehearsal FROM $table WHERE Attendee = '$pers[0]';");
+        while ($row = mysqli_fetch_array($result, MYSQLI_NUM)){
+            return [$row[0], $row[1], $row[2], $row[3]];
+        }
+    }
+}
+
+
 // Function to get order of person input
 function get_order($conn, $pers, $table){
     // Set the initial order of database
     $init_order = ["Attendee", "Bachelor_Party", "Bachelorette_Party", "Bridal_Party", "Rehearsal_Dinner", "Ceremony_and_Reception", "Meal", "Restrictions"];
 
-    // Get values of person in invite table into an array
-    $result = mysqli_query($conn, "SELECT Bachelor_Party, Bachelorette_Party, Bridal_Party, Rehearsal FROM $table WHERE Attendee = '$pers[0]';");
-    while ($row = mysqli_fetch_array($result, MYSQLI_NUM)){
-        $values = [$row[0], $row[1], $row[2], $row[3]];
-    }
+   $values = get_values($conn, $pers, $table);
 
     // Set amount removed as 0 initially
     $removed = 0;

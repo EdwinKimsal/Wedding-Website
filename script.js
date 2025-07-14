@@ -1,8 +1,41 @@
+// Function to generate the header on landing page
+function header_gen(){
+    // Get the header
+    const header = document.getElementById("wedding_header");
+
+    // Get user's width
+    const width = screen.width;
+
+    // Find what image to use
+    if (width >= 900){
+        var landing = "Images/landing1.jpg";
+    }
+    else{
+        var landing = "Images/landing6.jpg";
+    }
+
+    // Create image and text
+    const landing_image = document.createElement("img");
+    const landing_text = document.createElement("h1");
+
+    // Add info to image and text
+    landing_image.src = landing;
+    landing_image.id = "top_photo";
+    landing_text.innerHTML = "Wedding || 08/29/2026";
+    landing_text.id = "landing_text";
+    landing_text.className = "center";
+
+    // Add image and text to site
+    header.append(landing_image);
+    header.append(landing_text);
+}
+
 // Function to clean up data
 function clean_data(data){
     // Remove commas and make ' SQL friendly
     data = data.replaceAll(",", "");
     data = data.replaceAll("'", "''");
+    data = data.replaceAll("\\", "|")
 
     // Return fixed data
     return data;
@@ -55,17 +88,22 @@ function submitForm(){
 
             // When form is still valid
             else{
-                // Handle (pass) case for first field
-                if (i == 0){}
+                // Handle case for first field by adding name
+                if (i == 0){
+                    pers.push(clean_data(req_fields[i].value));
+                }
 
                 // Handle case for new person
                 else if (req_fields[i].id == "name"){
                     final_response.push(pers);
                     pers = new Array;
+                    pers.push(clean_data(req_fields[i].value));
                 }
 
-                // All cases
-                pers.push(clean_data(req_fields[i].value));
+                // When the case is not an email
+                else if (i != req_fields.length-1){
+                    pers.push(clean_data(req_fields[i].value));
+                }
             }
         }
 
@@ -88,6 +126,9 @@ function submitForm(){
     // Add email
     final_response.push(clean_data(document.getElementById("email").value));
 
+    // TEST
+    console.log(final_response);
+
     // Check if form is valid
     if (is_valid == true && count_rad_need == count_rad_have){
         // Connect to PHP
@@ -99,6 +140,7 @@ function submitForm(){
 
             // Run when connection has been made
             success: function(data){
+                console.log(data);
                 redirect();
             }
         });
@@ -302,7 +344,7 @@ function generate_pers(name, plus_one, rehearsal, bridal, bachelorette, bachelor
 
     // Add plus one by recursion, if needed
     if (plus_one == "y"){
-        generate_pers(name + "'s Guest", "n", rehearsal, "n", "n", "n");
+        generate_pers(name + "'s Guest", "n", rehearsal, "n", "n", "n", "n");
     }
 }
 
@@ -384,7 +426,6 @@ function add_meal(){
 
         // Find is_kid from the text area
         is_kid = this.parentElement.id;
-        console.log(is_kid);
 
         // Meals when not a kid
         if (is_kid == "n"){

@@ -5,22 +5,24 @@
         <title>Wedding</title>
         <link rel="icon" href="Images/logo.jpg">
         <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
     </head>
 
     <!-- BODY -->
-    <body>
+    <body onload="header_gen()">
         <!-- Top Header -->
-        <header>
-            <br>
-            <h1 class="center">Wedding || MM/DD/YYYY</h1><br>
-            <hr><br>
-        </header>
+        <header id="wedding_header"></header>
+
+        <!-- Section for invintation -->
+        <span>
+            <img id="invite" src="Images/invite.JPG">
+        </span><br><br>
 
         <!-- Main area -->
         <main id="gold_box" class="center">
             <p>Navigation Menu</p><br><hr>
             <a href="register.html"><button type="button" class="gold_button">RSVP</button></a>
             <a href="directions.html"><button type="button" class="gold_button">Directions</button></a>
-        </main><br><br><br><br><br><br><br>
+        </main><br><br><br><br>
      </body>
 </html>

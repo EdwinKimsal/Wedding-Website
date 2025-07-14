@@ -3,7 +3,7 @@
     /* -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none; */
-    margin: 0.4vw;
+    margin: 0;
     padding: none;
     border-radius: 0;
     font-size: clamp(2.2vh, 5.6rem, 1.2vw);
@@ -187,4 +187,34 @@ h2{
 /* Styling for text to be alligned right */
 .al_le{
     text-align: left;
+}
+
+/* Styling for image at the top of landing page */
+#top_photo{
+    width: 100%;
+    margin: 0;
+}
+
+/* Styling for text at the top of the landing page */
+#landing_text{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top: 1rem;
+    font-size: 1.5rem;
+
+    background-color: transparent;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap
+}
+
+/* Styling for invintation */
+#invite{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    max-width: 90%;
+    max-height: 85vh;
 }
