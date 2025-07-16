@@ -94,8 +94,18 @@ function main($input){
         $msg .= ",";
     }
 
-    // Replace spaces in msg with a delimeter
-    $msg = str_replace(" ", "\space", $msg);
+    // Replace spaces in msg with a delimeter and hande the & symbol
+    $msg = str_replace(" ", "_", $msg);
+    $msg = str_replace("&", "symbolforand", $msg);
+    $msg = str_replace(":", "thereallyspecialcolon", $msg);
+
+    // List of bad characters
+    $bad_char = ["\\", "'", "\"", ";", "&", "&&", "||", "|", "(", ")", "{", "}", ">", ">>", "<", "2>", "&>", "<&", ">&", "<<<", "<<", "$", "`", "*", "?", "[", "]", "~", "#", "-", "!", ":"];
+
+    // Remove bad characters from message
+    foreach ($bad_char as $char){
+        $msg = str_replace($char, "", $msg);
+    }
 
     // Run python file for CSV and email
     shell_exec("cd" .getcwd());

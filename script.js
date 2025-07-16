@@ -1,41 +1,41 @@
 // Function to generate the header on landing page
-function header_gen(){
-    // Get the header
-    const header = document.getElementById("wedding_header");
+// function header_gen(){
+//     // Get the header
+//     const header = document.getElementById("wedding_header");
 
-    // Get user's width
-    const width = screen.width;
+//     // Get user's width
+//     const width = screen.width;
 
-    // Find what image to use
-    if (width >= 900){
-        var landing = "Images/landing1.jpg";
-    }
-    else{
-        var landing = "Images/landing6.jpg";
-    }
+//     // Find what image to use
+//     if (width >= 700){
+//         var landing = "Images/landing1.jpg";
+//     }
+//     else{
+//         var landing = "Images/landing6.jpg";
+//     }
 
-    // Create image and text
-    const landing_image = document.createElement("img");
-    const landing_text = document.createElement("h1");
+//     // Create image and text
+//     const landing_image = document.createElement("img");
+//     const landing_text = document.createElement("h1");
 
-    // Add info to image and text
-    landing_image.src = landing;
-    landing_image.id = "top_photo";
-    landing_text.innerHTML = "Wedding || 08/29/2026";
-    landing_text.id = "landing_text";
-    landing_text.className = "center";
+//     // Add info to image and text
+//     landing_image.src = landing;
+//     landing_image.id = "top_photo";
+//     landing_text.innerHTML = "Wedding || 08/29/2026";
+//     landing_text.id = "landing_text";
+//     landing_text.className = "center";
 
-    // Add image and text to site
-    header.append(landing_image);
-    header.append(landing_text);
-}
+//     // Add image and text to site
+//     header.append(landing_image);
+//     header.append(landing_text);
+// }
 
 // Function to clean up data
 function clean_data(data){
     // Remove commas and make ' SQL friendly
     data = data.replaceAll(",", "");
     data = data.replaceAll("'", "''");
-    data = data.replaceAll("\\", "|")
+    data = data.replaceAll("\\", "|");
 
     // Return fixed data
     return data;
@@ -126,9 +126,6 @@ function submitForm(){
     // Add email
     final_response.push(clean_data(document.getElementById("email").value));
 
-    // TEST
-    console.log(final_response);
-
     // Check if form is valid
     if (is_valid == true && count_rad_need == count_rad_have){
         // Connect to PHP
@@ -140,7 +137,6 @@ function submitForm(){
 
             // Run when connection has been made
             success: function(data){
-                console.log(data);
                 redirect();
             }
         });

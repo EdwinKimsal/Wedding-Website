@@ -2,15 +2,18 @@
 import sys
 import smtplib
 from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
 
 # Function to fix data
 def fix_data(data):
     data = data.replace(",", "\n\t")
-    data = data.replace("\space", " ")
     data = data.replace("''", "'")
-    data = data.replace("_and_", " & ")
     data = data.replace("_", " ")
+    data = data.replace("thereallyspecialcolon", ":")
+    data = data.replace("symbolforand", "&")
     return data
+
 
 # Main function
 def main(data):
@@ -18,7 +21,8 @@ def main(data):
     port = 587
     server = "smtp.gmail.com"
     password = "ipgikcgemjcmfvkr"
-    sender = "kimsal.edwin@gmail.com"
+    username = "kimsal.edwin@gmail.com"
+    sender = "Edwin Kimsal <kimsal.edwin@gmail.com>"
     reciever = "edwin.kimsal@outlook.com"
 
     # Manipulate message
@@ -31,17 +35,30 @@ def main(data):
         {data}
         """
 
-    # Set message, from, to, subject
-    message = MIMEText(text, "plain")
-    message["From"] = sender
-    message["To"] = reciever
-    message["Subject"] = "Form Recieved"
+    # Set message, from, to, subject for user
+    message1 = MIMEText(text, "plain")
+    message1["From"] = sender
+    message1["To"] = reciever
+    message1["Subject"] = "Form Recieved"
+
+     # Set message, from, to, subject for admin
+    message2 = MIMEMultipart()
+    body = MIMEText("See attached file", "plain")
+    message2.attach(body)
+    message2["From"] = sender
+    message2["To"] = sender
+    message2["Subject"] = "Updated Attendence"
+
+    # Add CSV file
+    with open("data.csv", "r", encoding="utf-8") as f:
+        message2.attach(MIMEApplication(f.read(), Name="data.csv", encoding="utf-8"))
 
     # Send message
     with smtplib.SMTP(server, port) as server:
         server.starttls()
-        server.login(sender, password)
-        server.sendmail(sender, reciever, message.as_string())
+        server.login(username, password)
+        server.sendmail(username, reciever, message1.as_string())
+        server.sendmail(username, username, message2.as_string())
 
 
 # Call main function

@@ -20,12 +20,12 @@ def main(table):
 
 
     # Create a file
-    with open("data.csv", "w", newline='') as f:
+    with open("data.csv", "w", newline="", encoding="utf-8") as f:
         # Create writer
         writer = csv.writer(f)
 
         # Write header
-        writer.writerow(["Attendee", "Bachelor Party", "Bachelorette Party", "Bridal Party", "Ceremony & Rehearsal", "Reception", "Meal", "Restrictions", "Email"])
+        writer.writerow(["Attendee", "Bachelor Party", "Bachelorette Party", "Bridal Party", "Rehearsal Dinner", "Ceremony & Reception", "Meal", "Restrictions", "Email"])
 
         # Write data
         for row in results:
