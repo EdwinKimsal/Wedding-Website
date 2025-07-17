@@ -106,6 +106,12 @@ h2{
     background-color: transparent;
 }
 
+h3{
+    font-size: 1.0rem;
+    padding: 0.1rem;
+    padding-left: 0.5rem;
+}
+
 /* Styling for person boxes */
 .pers_box{
     background-color: #FFF2E8;
@@ -194,7 +200,14 @@ h2{
 /* Styling for image at the top of landing page */
 #top_photo{
     width: 100%;
+    min-width: width;
     margin: 0;
+}
+
+#background_photo{
+    width: 100%;
+    max-width: width;
+    background-image: url(Images/landing2.jpg);
 }
 
 /* Styling for text at the top of the landing page */
@@ -204,11 +217,6 @@ h2{
     transform: translate(-50%, 0);
     top: 1rem;
     font-size: 1.25rem;
-
-    background-color: transparent;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap
 }
 
 /* Styling for invintation */
@@ -228,14 +236,6 @@ h2{
     grid-template-columns: 100%;
 }
 
-@media screen and (min-width: 750px){
-    #grid{
-        border: none;
-        display: grid;
-        grid-template-columns: 50% 50%;
-    }
-}
-
 /* Styling for ceremony image */
 #cen_img{
     max-width: 90%;
@@ -251,4 +251,22 @@ h2{
     display: block;
     margin-top: auto;
     margin-bottom: auto;
+}
+
+/* Styling for days untill wedding */
+#countdown{
+    font-size: 6rem;
+}
+
+#days_text{
+    font-size: 2rem;
+}
+
+/* Styling for bigger screens */
+@media screen and (orientation: landscape){
+    #grid{
+        border: none;
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
 }

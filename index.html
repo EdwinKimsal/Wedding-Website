@@ -5,32 +5,52 @@
         <title>Wedding</title>
         <link rel="icon" href="Images/logo.jpg">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="media.css">
         <script src="script.js"></script>
         <meta name="viewport" content="width=device-width" />
     </head>
 
     <!-- BODY -->
-    <body>
-        <!-- Top Header -->
-        <header id="wedding_header">
-            <picture>
-                <source media="(min-width: 700px)" id="top_photo" srcset="Images/landing3.jpg">
-                <img id="top_photo" src="Images/landing5.jpg">
-            </picture>
-            <h1 id="landing_text" class="center">Clayton & Elizabeth | 08/29/2026</h1>
-        </header><br>
+    <body onload="get_days()">
+        <!-- Container for contents -->
+        <span id="container">
+            <!-- Top Header -->
+            <header id="wedding_header">
+                <!-- Nav Bar -->
+                <span id="sticky">
+                    <!-- Left text -->
+                    <span><h3>Elizabeth & Clayton | Auguest 29th, 2026</h3><h3>Mountain Top, Pennsylvania</h3></span>
 
-        <!-- Main area -->
-        <main id="gold_box" class="center">
-            <p>Navigation Menu</p><br>
-            <a href="register.html"><button type="button" class="gold_button">RSVP</button></a>
-            <a href="directions.html"><button type="button" class="gold_button">Directions</button></a>
-            <a href="https://billiejoandjeremyphotography.pic-time.com/-lizandclayproposalandengagement/login?inviteptoken2=AAAAAMUAAACf7EG4pS1oEvyty0IzEnfN5Q%2c%2c&redirect_back=%2f-lizandclayproposalandengagement%2fgallery%3finviteptoken2%3dAAAAAMUAAACf7EG4pS1oEvyty0IzEnfN5Q%252c%252c#3"><button type="button" class="gold_button">Photos</button></a>
-        </main><br><br>
+                    <!-- Right buttons -->
+                    <span id="nav_buttons">
+                        <a href="register.html"><button type="button" id="nav_button">RSVP</button></a>
+                        <a href="example.html"><button type="button" id="nav_button">Registry</button></a>
+                        <a href="directions.html"><button type="button" id="nav_button">Directions</button></a>
+                    </span>
+                </span>
 
-        <!-- Section for invintation -->
-        <span>
-            <img id="invite" src="Images/invite.JPG">
-        </span><br><br><br><br><br><br><br><br>
-     </body>
+                <!-- Top header picture -->
+                <img id="top_photo" src="Images/landing1.jpg">
+            </header><br><br>
+
+            <!-- Main area -->
+            <main id="gold_box_nav" class="center">
+                <p>Navigation Menu</p><br>
+                <a href="register.html"><button type="button" class="gold_button">RSVP</button></a>
+                <a href="example.html"><button type="button" class="gold_button">Registry</button></a>
+                <a href="directions.html"><button type="button" class="gold_button">Directions</button></a>
+            </main><br><br>
+
+            <!-- Section for invitation -->
+            <span id="invitation">
+                <img id="invite" src="Images/invite.JPG">
+            </span><br><br><br><br>
+
+            <!-- Section for days until wedding -->
+            <section id="count_cont" class="center">
+                <p id="countdown"></p>
+                <p id="days_text">Days Until Wedding</p>
+            </section><br><br><br><br><br><br><br><br>
+        </span>
+    </body>
 </html>

@@ -1,0 +1,109 @@
+/* Styling for sticky (none by default) */
+#sticky{
+    display: none;
+    font-size: 0;
+}
+
+/* Styling for nav box (none by default) */
+#gold_box_nav{
+    display: block;
+
+    width: 65%;
+    padding: 1.2rem;
+    margin: 0.8rem auto;
+    margin-top: 0rem;
+    line-height: 1.6rem;
+
+    background-color: transparent;
+    color: #C19828;
+
+    border-style: solid;
+    border-width: .12rem;
+    border-color: #C19828;
+    border-radius: 1rem;
+}
+
+/* Styling for navigation buttons */
+#nav_buttons{
+    height: 100%;
+    text-align: right;
+    font-size: 0;
+}
+
+#nav_button{
+    height: 100%;
+    padding: .8rem;
+    align-self: right;
+    border-radius: 0;
+    border: none;
+    border-left: 0.085rem solid #A18104;
+}
+
+#nav_button:hover{
+    border-color: #A18104;
+    background-color: #A18104;
+    color: #FFF2E8;
+}
+
+/* Styling for invitation image */
+#invitation{
+    background-color: transparent;
+}
+
+/* Styling for countdown */
+#count_cont{
+    background-color: transparent;
+}
+
+/* Styling for paragraphs */
+p{
+    background-color: transparent;
+}
+
+/* Styling for header photo(s) */
+#top_photo{
+    display: none;
+}
+
+body{    
+    background-image: url("Images/landing2.jpg");
+    background-size: cover;
+    background-position: center 0;
+}
+
+#container{
+    display: block;
+    background-color: rgba(255, 241, 232, 0.95);
+}
+
+/* Styling for bigger screens */
+@media screen and (orientation: landscape){
+    /* Styling for sticky header */
+    #sticky{
+        display: grid;
+        grid-template-columns: auto auto;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    #gold_box_nav{
+        display: none;
+    }
+
+    #top_photo{
+        display: block;
+        width: 100%;
+        min-width: width;
+        margin: 0;
+    }
+
+    body{
+        position: relative;
+        background-image: none;
+    }
+
+    #container{
+        background-color: rgb(255, 241, 232);
+    }
+}

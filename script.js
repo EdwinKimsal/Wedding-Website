@@ -1,34 +1,33 @@
-// Function to generate the header on landing page
-// function header_gen(){
-//     // Get the header
-//     const header = document.getElementById("wedding_header");
+// Function to get the number of days until wedding
+function get_days(){
+    // Get element(s) to manipulate
+    countdown = document.getElementById("countdown");
+    text = document.getElementById("days_text");
 
-//     // Get user's width
-//     const width = screen.width;
+    // Wedding date
+    var countDownDate = new Date("Aug 29, 2026 00:00:01").getTime();
 
-//     // Find what image to use
-//     if (width >= 700){
-//         var landing = "Images/landing1.jpg";
-//     }
-//     else{
-//         var landing = "Images/landing6.jpg";
-//     }
+    // Now
+    var now = new Date().getTime();
 
-//     // Create image and text
-//     const landing_image = document.createElement("img");
-//     const landing_text = document.createElement("h1");
 
-//     // Add info to image and text
-//     landing_image.src = landing;
-//     landing_image.id = "top_photo";
-//     landing_text.innerHTML = "Wedding || 08/29/2026";
-//     landing_text.id = "landing_text";
-//     landing_text.className = "center";
+    // Get number of days
+    var days = Math.floor((countDownDate - now) / (1000 * 60 * 60 * 24)) + 1;
 
-//     // Add image and text to site
-//     header.append(landing_image);
-//     header.append(landing_text);
-// }
+    // Set countdown to zero if less than 0
+    if (days < 0){
+        days = 0;
+    }
+
+    // Set days to HTML
+    countdown.innerHTML = days;
+
+    // Change text is only one day or less to wedding
+    if (days ==  1){
+        text.innerHTML = "Day Until Wedding"
+    }
+}
+
 
 // Function to clean up data
 function clean_data(data){
