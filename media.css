@@ -65,21 +65,15 @@ p{
     display: none;
 }
 
-/* Styling for body of potriat */
-body{ 
+/* Addition of whitespace in potrait mode to show couple */
+#space{
+    display: block;
+    height: 100vh;
     background: url("Images/landing2.jpg") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-}
-
-/* Addition of whitespace in potrait mode to show couple */
-#space{
-    display: block;
-    height: 100%;
-    height: 100vh;
-    background-color: transparent;
 }
 
 
@@ -111,11 +105,6 @@ body{
         width: 100%;
         min-width: width;
         margin: 0;
-    }
-
-    body{
-        position: relative;
-        background-image: none;
     }
 
     /* Removes spacing in landscape mode */
