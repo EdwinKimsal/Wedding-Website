@@ -77,11 +77,9 @@ body{
 /* Addition of whitespace in potrait mode to show couple */
 #space{
     display: block;
-    height: 100%;
     height: 100vh;
     background-color: transparent;
 }
-
 
 /* Styling for container (opague color) of potriat */
 #container{
