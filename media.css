@@ -68,7 +68,7 @@ p{
 /* Styling for phone background of portrait mode */
 #phone_pic{
     display: block;
-    position: absolute;
+    position: fixed;
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -78,7 +78,7 @@ p{
 #container{
     position: absolute;
     top: 100vh;
-    background: linear-gradient(0deg, rgba(255, 241, 232, 1.0) 0%, rgba(255, 241, 232, 0.6) 70%, rgba(255, 241, 232, 0.0) 100%);
+    background: linear-gradient(0deg, rgba(255, 241, 232, 1.0) 0%, rgba(255, 241, 232, 0.6) 80%, rgba(255, 241, 232, 0.0) 100%);
     background-attachment: scroll;
     width: 100%;
 }
