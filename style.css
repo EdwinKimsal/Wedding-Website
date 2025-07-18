@@ -178,12 +178,11 @@ h3{
 
 /* Styling for gold button */
 .gold_button{
-    display: flex;
-    margin: 0rem auto;
-    margin-top: 0.8rem;
+    text-align: center;
 
     border-color: #572600;
     color: #572600;
+    background-color: #FFF2E8;
 }
 
 .gold_button:hover{
