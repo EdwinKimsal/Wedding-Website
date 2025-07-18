@@ -178,7 +178,8 @@ h3{
 
 /* Styling for gold button */
 .gold_button{
-    text-align: center;
+    display: block;
+    margin: 0.8rem auto;
 
     border-color: #572600;
     color: #572600;
@@ -186,6 +187,21 @@ h3{
 }
 
 .gold_button:hover{
+    border-color: #C19828;
+    background-color: #C19828;
+    color: #FFF2E8;
+}
+
+/* Styling for gold button in navigation */
+.gold_button_nav{
+    text-align: center;
+
+    border-color: #572600;
+    color: #572600;
+    background-color: #FFF2E8;
+}
+
+.gold_button_nav:hover{
     border-color: #C19828;
     background-color: #C19828;
     color: #FFF2E8;
@@ -221,6 +237,7 @@ h3{
 /* Styling for invintation */
 #invite{
     max-width: 90%;
+    max-height: 85%;
     max-height: 85vh;
 
     display: block;
