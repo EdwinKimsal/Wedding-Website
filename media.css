@@ -68,20 +68,24 @@ p{
 /* Styling for body of potriat */
 body{ 
     background-image: url("Images/landing2.jpg");
+    background-attachment: fixed;
     background-size: cover;
     background-position: center 0;
 }
+
+/* Addition of whitespace in potrait mode to show couple */
+#space{
+    display: block;
+    height: 100vh;
+    background-color: transparent;
+}
+
 
 /* Styling for container (opague color) of potriat */
 #container{
     display: inline-block;
     background-color: rgba(255, 241, 232, 0.8);
-}
-
-/* Addition of whitespace in potrait mode to show couple */
-#space{
-    display: inline-block;
-    height: 100vh;
+    width: 100%;
 }
 
 /* Styling for bigger screens */
@@ -111,12 +115,13 @@ body{
         background-image: none;
     }
 
-    #container{
-        background-color: rgb(255, 241, 232);
-    }
-
-    /* Remove spacing in landscape mode */
+    /* Removes spacing in landscape mode */
     #space{
         height: 0px;
+    }
+
+    /* Removes container in landscape mode */
+    #container{
+        background-color: rgb(255, 241, 232);
     }
 }
