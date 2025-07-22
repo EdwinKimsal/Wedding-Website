@@ -77,10 +77,16 @@ p{
 /* Styling for container (opague color) of portriat */
 #container{
     position: absolute;
-    top: 100vh;
+    top: 50vh;
     background: linear-gradient(0deg, rgba(255, 241, 232, 1.0) 0%, rgba(255, 241, 232, 0.6) 80%, rgba(255, 241, 232, 0.0) 100%);
     background-attachment: scroll;
     width: 100%;
+}
+
+/* Styling for whitespace */
+#whitespace{
+    display: inline;
+    line-height: 50vh;
 }
 
 /* Styling for bigger screens */
@@ -94,8 +100,14 @@ p{
         width: 100%;
     }
 
+    /* Remove styling for the main menue */
     #gold_box_nav{
         display: none;
+    }
+
+    /* Remove styling for the white space */
+    #whitespace{
+        display: none
     }
 
     #top_photo{
