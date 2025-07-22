@@ -78,7 +78,7 @@ p{
 #container{
     position: absolute;
     top: 50vh;
-    background: linear-gradient(0deg, rgba(255, 241, 232, 1.0) 0%, rgba(255, 241, 232, 0.80) 80%, rgba(255, 241, 232, 0.0) 100%);
+    background: linear-gradient(0deg, rgba(255, 241, 232, 1.0) 0%, rgba(255, 241, 232, 0.80) 75%, rgba(255, 241, 232, 0.0) 100%);
     background-attachment: scroll;
     width: 100%;
 }
@@ -86,7 +86,7 @@ p{
 /* Styling for whitespace */
 #whitespace{
     display: inline;
-    line-height: 35vh;
+    line-height: 30vh;
 }
 
 /* Styling for bigger screens */
