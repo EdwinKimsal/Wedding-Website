@@ -204,6 +204,22 @@ function fetch_data(){
 }
 
 
+// Function after user modifies register party input box to change display of datalist
+function update_datalist(){
+	// Get the input field of register field and it's datalist
+	const input_field = document.getElementById("party_input");
+	const datalist = document.getElementById("party_list");
+	
+	// Change styling based on length of input_field
+	if (input_field.length > 2){
+		input_field.removeAttribute("list");
+	}
+	else{
+		input_field.setAttribute("list", "party_list");
+	}
+}
+
+
 // Redirect user to RSVP page with designated party
 function load_form(){
     // Get inputed party

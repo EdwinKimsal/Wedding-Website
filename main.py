@@ -18,8 +18,7 @@ def main(table):
         crsr.execute(f"SELECT * FROM {table};")
         results = crsr.fetchall()
 
-
-    # Create a file
+    # Create a file to store data in a csv file
     with open("data.csv", "w", newline="", encoding="utf-8") as f:
         # Create writer
         writer = csv.writer(f)

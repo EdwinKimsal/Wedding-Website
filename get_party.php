@@ -4,8 +4,8 @@ function main(){
     // Create variables to get to the table
     $server = "localhost";
     $username = "root";
-    $password = "abcde";
     $database = "wedding_rsvp";
+    $password = "abcde";
     $table = "invite_list";
 
     // Create connection

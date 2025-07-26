@@ -23,9 +23,9 @@
         <main id="gold_box">
             <h2>Register Party</h2><br><hr><br>
             <label for="party_input">Enter your last name and click your party:</label><br>
-            <input type="search" list="party_list" id="party_input" rows="1" maxLength="100" autocomplete="off" autocorrect="off" spellcheck="false"></input>
+            <input type="search" list="party_list" id="party_input" rows="1" maxLength="100" spellcheck="false" onkeyup="update_datalist()"></input>
 
-            <datalist id="party_list">
+            <datalist id="party_list" class="invisible_display" autocomplete="false">
             </datalist>
         </main><br>
 
