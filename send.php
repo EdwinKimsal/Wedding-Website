@@ -58,6 +58,9 @@ function main($input){
 
     // Create string for email message
     $msg = "";
+    
+    // Find email
+    $email = $input[count($input)-1];
 
     // Iterate through each element in array
     foreach($input as $pers){
@@ -80,7 +83,7 @@ function main($input){
             // Add email to both commands
             $attr_com .= "Email)";
             $val_com .= "'";
-            $val_com .= $input[count($input)-1];
+            $val_com .= $email;
             $val_com .= "');";
 
             // Merge two together
@@ -110,7 +113,7 @@ function main($input){
     // Run python file for CSV and email
     shell_exec("cd" .getcwd());
     shell_exec("python main.py $table"); // CSV
-    shell_exec("python mail.py $msg"); // Email
+    shell_exec("python mail.py $msg $email"); // Email
 }
 
 

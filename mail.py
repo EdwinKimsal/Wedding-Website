@@ -16,14 +16,14 @@ def fix_data(data):
 
 
 # Main function
-def main(data):
+def main(data, email):
     # Email variables
     port = 587
     server = "smtp.gmail.com"
     password = "ipgikcgemjcmfvkr"
     username = "kimsal.edwin@gmail.com"
     sender = "Edwin Kimsal <kimsal.edwin@gmail.com>"
-    reciever = "edwin.kimsal@outlook.com"
+    reciever = fix_data(email)
 
     # Manipulate message
     data = fix_data(data)
@@ -62,4 +62,4 @@ def main(data):
 
 
 # Call main function
-main(sys.argv[1])
+main(sys.argv[1], sys.argv[2])

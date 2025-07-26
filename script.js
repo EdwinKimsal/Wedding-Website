@@ -173,7 +173,6 @@ function fetch_data(){
             arr_data.pop();
 
             // Create this list to be a dictionary of parties and names associated with each party
-            // FIXME
             for (i=0; i<arr_data.length; i++){
                 // If the party is new, create a key with the name, else append
                 if (dict_parties.has(arr_data[i][1])){
@@ -211,11 +210,11 @@ function update_datalist(){
 	const datalist = document.getElementById("party_list");
 	
 	// Change styling based on length of input_field
-	if (input_field.length > 2){
-		input_field.removeAttribute("list");
+	if (input_field.value.length < 3){
+		datalist.innerHTML = "";
 	}
-	else{
-		input_field.setAttribute("list", "party_list");
+	else if (datalist.innerHTML == ""){
+		fetch_data();
 	}
 }
 
@@ -231,18 +230,31 @@ function load_form(){
     for(i=0; i<options.length; i++){
         parties.push(options[i].value);
     }
+    
+    // Get list of parties that have already registered
+    $.ajax({
+		type: "GET",
+        url: "get_registered_parties.php",
+        datatype: "json",
+        
+         // Run when connection has been made
+        success: function(data){
+			// Make data a array
+			arr_data = data.split("\n");
+			
+			// Make sure the party is valid
+			if (parties.includes(party) && !(arr_data.includes(party))){
+				// Set URL and redirect user with designated party
+				const url = "rsvp.html?Party=" + party;
+				window.location.href = url;
+			}
 
-    // Make sure the party is valid
-    if (parties.includes(party)){
-        // Set URL and redirect user with designated party
-        const url = "rsvp.html?Party=" + party;
-        window.location.href = url;
-    }
-
-    // Else notify user
-    else{
-        alert(party + " is not a valid party. Please enter a valid party.");
-    }
+			// Else notify user
+			else{
+				alert(party + " is not a valid party or has already been registered. Please enter a valid party or email X for assistance");
+			}
+		}
+	})
 }
 
 

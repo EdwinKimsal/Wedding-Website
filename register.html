@@ -11,7 +11,7 @@
     </head>
 
     <!-- BODY -->
-    <body onload="fetch_data()"></body>
+    <body>
         <!-- Top Header -->
         <header>
             <br>
@@ -23,9 +23,9 @@
         <main id="gold_box">
             <h2>Register Party</h2><br><hr><br>
             <label for="party_input">Enter your last name and click your party:</label><br>
-            <input type="search" list="party_list" id="party_input" rows="1" maxLength="100" spellcheck="false" onkeyup="update_datalist()"></input>
+            <input type="search" list="party_list" id="party_input" rows="1" maxLength="100" autoCorrect="off" autoCapitalize="off" autoComplete="off" spellCheck="false" onKeyUp="update_datalist()"/>
 
-            <datalist id="party_list" class="invisible_display" autocomplete="false">
+            <datalist id="party_list" autocorrect="off" autocapitalize="off" autocomplete="off">
             </datalist>
         </main><br>
 
