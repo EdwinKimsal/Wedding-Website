@@ -48,10 +48,10 @@ function main($input){
     // Create variables to get to the table
     $server = "localhost";
     $username = "root";
-    $password = "tw+rdNHix1";
-    $database = "wedding_rsvp";
-    $table = "guests";
-    $input_table = "invite_list";
+    $password = "password";
+    $database = "database";
+    $table = "table";
+    $input_table = "input_table";
 
     // Create connection
     $conn = new mysqli($server, $username, $password, $database);
@@ -120,3 +120,4 @@ function main($input){
 // Call main function
 main(json_decode($_POST['data'])); // JSON decode decodes the json data into an array
 ?>
+
