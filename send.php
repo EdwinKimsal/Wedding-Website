@@ -48,7 +48,7 @@ function main($input){
     // Create variables to get to the table
     $server = "localhost";
     $username = "root";
-    $password = "abcde";
+    $password = "tw+rdNHix1";
     $database = "wedding_rsvp";
     $table = "guests";
     $input_table = "invite_list";
@@ -111,7 +111,7 @@ function main($input){
     }
 
     // Run python file for CSV and email
-    shell_exec("cd" .getcwd());
+    shell_exec("cd " .getcwd());
     shell_exec("python main.py $table"); // CSV
     shell_exec("python mail.py $msg $email"); // Email
 }
