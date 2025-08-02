@@ -4,10 +4,10 @@ function main(){
 	// Create variables to get to the table
     $server = "localhost";
     $username = "root";
-    $database = "wedding_rsvp";
-    $password = "tw+rdNHix1";
-    $invite = "invite_list";
-    $submissions = "guests";
+    $database = "database";
+    $password = "password";
+    $invite = "table";
+    $submissions = "table";
     
 	// Create connection
     $conn = new mysqli($server, $username, $password, $database);
