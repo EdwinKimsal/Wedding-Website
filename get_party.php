@@ -5,7 +5,7 @@ function main(){
     $server = "localhost";
     $username = "root";
     $database = "wedding_rsvp";
-    $password = "tw+rdNHix1";
+    $password = "password";
     $table = "invite_list";
 
     // Create connection
@@ -24,3 +24,4 @@ function main(){
 // Call main function
 main()
 ?>
+
