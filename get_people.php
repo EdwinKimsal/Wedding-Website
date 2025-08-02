@@ -4,9 +4,9 @@ function main($input){
     // Create variables to get to the table
     $server = "localhost";
     $username = "root";
-    $password = "tw+rdNHix1";
-    $database = "wedding_rsvp";
-    $table = "invite_list";
+    $password = "passwprd";
+    $database = "database";
+    $table = "table";
 
     // Create connection
     $conn = new mysqli($server, $username, $password, $database);
@@ -24,3 +24,4 @@ function main($input){
 // Call main function
 main(json_decode($_GET['data'])); // JSON decode decodes the json data into an array
 ?>
+
