@@ -20,9 +20,9 @@ def main(data, email):
     # Email variables
     port = 587
     server = "smtp.gmail.com"
-    password = "ipgikcgemjcmfvkr"
-    username = "kimsal.edwin@gmail.com"
-    sender = "Edwin Kimsal <kimsal.edwin@gmail.com>"
+    password = "password"
+    username = "senderEmail"
+    sender = "senderName <senderEmail>"
     reciever = fix_data(email)
 
     # Manipulate message
@@ -63,3 +63,4 @@ def main(data, email):
 
 # Call main function
 main(sys.argv[1], sys.argv[2])
+
