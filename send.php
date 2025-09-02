@@ -48,10 +48,10 @@ function main($input){
     // Create variables to get to the table
     $server = "localhost";
     $username = "root";
-    $password = "password";
-    $database = "database";
-    $table = "table";
-    $input_table = "input_table";
+    $password = "tw+rdNHix1";
+    $database = "wedding_rsvp";
+    $table = "guests";
+    $input_table = "invite_list";
 
     // Create connection
     $conn = new mysqli($server, $username, $password, $database);
@@ -111,13 +111,11 @@ function main($input){
     }
 
     // Run python file for CSV and email
-    shell_exec("cd " .getcwd());
-    shell_exec("python main.py $table"); // CSV
-    shell_exec("python mail.py $msg $email"); // Email
+    shell_exec("/enviroments/wedding-venv/bin/python /var/www/backend/main.py $table"); // CSV
+    shell_exec("/enviroments/wedding-venv/bin/python /var/www/backend/mail.py $msg $email"); // Email
 }
 
 
 // Call main function
 main(json_decode($_POST['data'])); // JSON decode decodes the json data into an array
 ?>
-

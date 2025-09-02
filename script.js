@@ -143,13 +143,13 @@ function submitForm(){
 
     // Else form is not valud
     else{
-        alert("Not all required fields have been filled") // ALert user that submission was not completed
+        alert("Not all required fields have been filled") // Alert user that submission was not completed
     }
 }
 
 
 // Function to fetch data
-function fetch_data(){
+function fetch_data(usr_input){
     // Create connection to GET data
     $.ajax({
         type: "GET",
@@ -174,17 +174,23 @@ function fetch_data(){
 
             // Create this list to be a dictionary of parties and names associated with each party
             for (i=0; i<arr_data.length; i++){
-                // If the party is new, create a key with the name, else append
-                if (dict_parties.has(arr_data[i][1])){
-                    dict_parties.get(arr_data[i][1]).push(arr_data[i][0]);
-                }
-                else{
-                    dict_parties.set(arr_data[i][1], [arr_data[i][0]]);
+                // Add it if and only if the usr_input is in one of the returns
+                if (arr_data[i][0].toLowerCase().includes(usr_input.toLowerCase()) || arr_data[i][1].toLowerCase().includes(usr_input.toLowerCase())){
+                    // If the party is new, create a key with the name, else append
+                    if (dict_parties.has(arr_data[i][1])){
+                        dict_parties.get(arr_data[i][1]).push(arr_data[i][0]);
+                    }
+                    else{
+                        dict_parties.set(arr_data[i][1], [arr_data[i][0]]);
+                    }
                 }
             }
 
             // Get variable for datalist
             const datalist_var = document.getElementById("party_list");
+            
+            // Clear datalist_var
+            datalist_var.innerHTML = "";
 
             // Iterate through the map and assign to datalist_var appropriately
             for (const [key, value] of dict_parties){
@@ -210,11 +216,12 @@ function update_datalist(){
 	const datalist = document.getElementById("party_list");
 	
 	// Change styling based on length of input_field
-	if (input_field.value.length < 3){
-		datalist.innerHTML = "";
+	if (input_field.value.length >= 3 && datalist.innerHTML == ""){
+        datalist.innerHTML = ""
+		fetch_data(input_field.value);
 	}
-	else if (datalist.innerHTML == ""){
-		fetch_data();
+	else if (input_field.value.length < 3){
+		datalist.innerHTML = ""
 	}
 }
 

@@ -1,9 +1,10 @@
+<!-- Home Page -->
 <!DOCTYPE html>
 <html>
     <!-- HEAD -->
     <head>
         <title>Wedding</title>
-        <link rel="icon" href="Images/logo.jpg">
+        <link rel="icon" href="still_pics/logo.jpg">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="media.css">
         <script src="script.js"></script>
@@ -14,7 +15,7 @@
     <body onload="get_days()">
         <!-- Background image container for portrait mode-->
          <div>
-            <img id="phone_pic" src="Images/landing2.jpg">
+            <img loading="lazy" id="phone_pic" src="still_pics/landing2.jpg">
          </div>
 
         <!-- Container for contents -->
@@ -31,27 +32,47 @@
 
                     <!-- Right buttons -->
                     <span id="nav_buttons">
+                        <a id="nav_marker" href="about.html"><button type="button" id="nav_button">About Us</button></a>
+                        <a id="nav_marker" href="hotel.html"><button type="button" id="nav_button">Hotel Info</button></a>
+                        <a id="nav_marker" href="directions.html"><button type="button" id="nav_button">Venue Info</button></a>
+                        
+                        <!--
                         <a href="register.html"><button type="button" id="nav_button">RSVP</button></a>
                         <a href="example.html"><button type="button" id="nav_button">Registry</button></a>
-                        <a href="directions.html"><button type="button" id="nav_button">Directions</button></a>
+                        <a href="brochure.html"><button type="button" id="nav_button">Brochure</button></a>
+                        -->
+                        
                     </span>
                 </span>
 
                 <!-- Top header picture -->
-                <img id="top_photo" src="Images/landing1.jpg">
+                <img loading="lazy" id="top_photo" src="still_pics/landing1.jpg">
             </header><br><br>
 
+            <!-- Wedding Logo -->
+            <img loading="lazy" id="logo" src="still_pics/wedding-logo.png">
+            
             <!-- Main area -->
             <main id="gold_box_nav" class="center">
-                <p>Navigation Menu</p><br>
-                <a href="register.html"><button type="button" class="gold_button_nav">RSVP</button></a><br><br>
-                <a href="example.html"><button type="button" class="gold_button_nav">Registry</button></a><br><br>
-                <a href="directions.html"><button type="button" class="gold_button_nav">Directions</button></a>
+                <div class="grid">
+                    <a href="about.html"><button type="button" class="gold_button_nav">About Us</button></a>
+                    <a href="hotel.html"><button type="button" class="gold_button_nav">Hotel Info</button></a>
+                    <a href="directions.html"><button type="button" class="gold_button_nav">Venue Info</button></a>
+                </div>
+                
+                <p>Coming Soon</p>
+                <div class="grid">
+                    <button type="button" id="unpublished" class="gold_button_nav">RSVP</button>
+                    <button type="button" id="unpublished" class="gold_button_nav">Registry</button>
+                    <button type="button" id="unpublished"class="gold_button_nav">Brochure</button>
+                </div><br>
+                      
+                <p id="small" class="center">&#x25BC; Scroll For More Information &#x25BC;</p> <!-- Arrow to tell user to scroll on potrait -->
             </main><br><br>
 
             <!-- Section for invitation -->
             <span id="invitation">
-                <img id="invite" src="Images/invite.jpg">
+                <img loading="small" id="invite" src="still_pics/vert_sve.jpg">
             </span><br><br><br><br>
 
             <!-- Section for days until wedding -->

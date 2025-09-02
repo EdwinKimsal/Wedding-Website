@@ -1,3 +1,15 @@
+/*
+This file is for dynamic styling on the home page
+Focusing on portrait vs landscape mode
+*/
+
+
+/* Styling for smaller text */
+#small{
+    display: inline;
+    font-size: 0.8rem;
+}
+
 /* Styling for sticky (none by default) */
 #sticky{
     display: none;
@@ -6,21 +18,24 @@
 
 /* Styling for nav box (none by default) */
 #gold_box_nav{
-    display: block;
-
-    width: 65%;
+    width: 75%;
     padding: 1.2rem;
     margin: 0.8rem auto;
     margin-top: 0rem;
     line-height: 1.6rem;
-
-    background-color: #FFF2E8;
-    color: #C19828;
+    
+    background-color: rgb(252, 252, 244);
 
     border-style: solid;
     border-width: .12rem;
-    border-color: #C19828;
-    border-radius: 1rem;
+    border-color: black;
+    border-radius: 2rem;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 2rem;
 }
 
 /* Styling for navigation buttons */
@@ -32,17 +47,20 @@
 
 #nav_button{
     height: 100%;
-    padding: .8rem;
+    padding: 0.5rem;
     align-self: right;
     border-radius: 0;
     border: none;
-    border-left: 0.085rem solid #A18104;
+    border-left: 0.1rem solid rgb(145, 145, 145);
+    background-color: rgb(160, 160, 160);
+    font-size: 0.9rem;
+    color: white;
 }
 
 #nav_button:hover{
-    border-color: #A18104;
-    background-color: #A18104;
-    color: #FFF2E8;
+    border-color: rgb(145, 145, 145);
+    background-color: rgb(145, 145, 145);
+    color: white;
 }
 
 /* Styling for invitation image */
@@ -58,6 +76,7 @@
 /* Styling for paragraphs */
 p{
     background-color: transparent;
+    color: black;
 }
 
 /* Styling for header photo(s) */
@@ -74,11 +93,34 @@ p{
     object-fit: cover;
 }
 
+/* Styling for logo */
+#logo{
+    display: block;
+    margin: auto;
+    max-width: 55%;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.4), transparent, transparent, transparent, transparent);
+}
+
+/* Countdown styling */
+#countdown{
+    color: black;
+}
+
+#days_text{
+    color: black;
+}
+
+/* Nav header styling */
+#nav_h{
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
 /* Styling for container (opague color) of portriat */
 #container{
     position: absolute;
-    top: 50vh;
-    background: linear-gradient(0deg, rgba(255, 241, 232, 1.0) 0%, rgba(255, 241, 232, 0.80) 75%, rgba(255, 241, 232, 0.0) 100%);
+    top: 6vh;
+    background: linear-gradient(0deg, rgba(189, 223, 227, 1.0) 0%, rgba(189, 223, 227, 0.95) 25%, rgba(189, 223, 227, 0.80) 60%, rgba(189, 223, 227, 0.40) 80%, rgba(189, 223, 227, 0.0) 100%);
     background-attachment: scroll;
     width: 100%;
 }
@@ -86,7 +128,7 @@ p{
 /* Styling for whitespace */
 #whitespace{
     display: inline;
-    line-height: 15vh;
+    line-height: 12vh;
 }
 
 /* Styling for bigger screens */
@@ -98,6 +140,7 @@ p{
         position: fixed;
         top: 0;
         width: 100%;
+        background-color: #F2F6EB;
     }
 
     /* Remove styling for the main menue */
@@ -133,6 +176,16 @@ p{
 
     /* Removes container in landscape mode */
     #container{
-        background-color: rgb(255, 241, 232);
+        background-color: rgb(189, 223, 227);
+    }
+    
+    /* Remove logo */
+    #logo{
+        display: none;
+    }
+    
+    /* Remove scroll for more */
+    #small{
+        display: none;
     }
 }

@@ -1,3 +1,7 @@
+/*
+Styling that deals wiht ALL HTML files
+*/
+
 /* Default Styling */
 *{
     /* -webkit-appearance: none;
@@ -10,8 +14,31 @@
     font-family: "Times New Roman", Times, serif;
     text-decoration: none;
     font-weight: normal;
-    color: #572600;
-    background-color: #FFF2E8;
+    color: black;
+    background-color: transparent;
+}
+
+/* Styling for body */
+body{
+background-color: rgb(189, 223, 227);
+}
+
+/* Styling for header */
+header{
+    background-color: #F2F6EB;
+}
+
+/* Styling for a tag */
+a:not(#nav_marker){
+    display: block;
+    width: fit-content;
+    height: fit-content;
+    margin: 0.8rem auto;
+}
+
+/* Transparent paragraphs */
+p{
+    background-color: transparent;
 }
 
 /* Styling for Title */
@@ -36,6 +63,7 @@ textarea{
     border-width: 0.085rem;
     border-radius: 0.2rem;
     border-color: #572600;
+    background-color: #F2F6EB;
 }
 
 textarea::selection{
@@ -81,6 +109,7 @@ input[type=search]{
     border-width: 0.085rem;
     border-radius: 0.2rem;
     border-color: #572600;
+    background-color: #F2F6EB;
 }
 
 input[type=search]::selection{
@@ -101,20 +130,26 @@ input[type=search]::selection{
 }
 
 /* Styling for headers */
+h1{
+    background-color: transparent;
+}
+
 h2{
     display: inline;
     background-color: transparent;
 }
 
 h3{
-    font-size: 1.0rem;
+    font-size: 1rem;
     padding: 0.1rem;
     padding-left: 0.5rem;
+    
+    color: black;
 }
 
 /* Styling for person boxes */
 .pers_box{
-    background-color: #FFF2E8;
+    background-color: #F2F6EB;
 
     width: 65%;
     padding: 1.2rem;
@@ -124,40 +159,9 @@ h3{
 
     border-style: solid;
     border-width: .12rem;
-    border-color: #A18104;
+    border-color: black;
     border-radius: 1rem;
     
-}
-
-/* Styling for delete button */
-.close_button{
-    background-color: #FFF2E8;
-    border-style: solid;
-    border-color: #572600;
-    color: #572600;
-}
-
-.close_button:hover{
-    border-color: #A18104;
-    background-color: #A18104;
-    color: #FFF2E8;
-}
-
-/* Styling for adding new person button */
-.pers_button{
-    display: flex;
-    margin: 0.8rem auto;
-    margin-top: 0;
-
-    background-color: #FFF2E8;
-    border-color: #572600;
-    color: #572600;
-}
-
-.pers_button:hover{
-    border-color: #A18104;
-    background-color: #A18104;
-    color: #FFF2E8;
 }
 
 /* Styling for gold box */
@@ -168,11 +172,12 @@ h3{
     margin-top: 0rem;
     line-height: 1.6rem;
 
-    color: #C19828;
+    color: black;
+    background-color: #F2F6EB;
 
     border-style: solid;
     border-width: .12rem;
-    border-color: #C19828;
+    border-color: black;
     border-radius: 1rem;
 }
 
@@ -180,36 +185,56 @@ h3{
 .gold_button{
     display: block;
     margin: 0.8rem auto;
-
-    border-color: #572600;
-    color: #572600;
-    background-color: #FFF2E8;
+    
+    border-color: black;
+    color: white;
+    background-color: rgb(160, 160, 160);
 }
 
 .gold_button:hover{
-    border-color: #C19828;
-    background-color: #C19828;
-    color: #FFF2E8;
+    border-color: rgb(145, 145, 145);
+    background-color: rgb(145, 145, 145);
+    color: white;
 }
 
 /* Styling for gold button in navigation */
 .gold_button_nav{
-    text-align: center;
+    display: block;
+    margin: 0.8rem auto;
+    width: 5rem;
 
-    border-color: #572600;
-    color: #572600;
-    background-color: #FFF2E8;
+    border-color: black;
+    color: white;
+    background-color: rgb(160, 160, 160);
 }
 
 .gold_button_nav:hover{
-    border-color: #C19828;
-    background-color: #C19828;
-    color: #FFF2E8;
+    border-color: rgb(145, 145, 145);
+    background-color: rgb(145, 145, 145);
+    color: white;
+}
+
+/* Changes for unpublished buttons */
+#unpublished{
+    background-color: rgb(210, 210, 210);
+    border-color: black;
+}
+
+#unpublished:hover{
+    background-color: rgb(210, 210, 210);
+    border-color: black;
+    cursor: not-allowed;
 }
 
 /* Styling for text to be alligned right */
 .al_le{
     text-align: left;
+}
+
+/* Styling for long pieces of text */
+#long_txt{
+    line-height: 2rem;
+    font-size: 0.95rem;
 }
 
 /* Styling for image at the top of landing page */
@@ -253,6 +278,7 @@ h3{
     border: none;
     display: grid;
     grid-template-columns: 100%;
+    background-color: transparent;
 }
 
 /* Styling for ceremony image */
@@ -270,6 +296,8 @@ h3{
     display: block;
     margin-top: auto;
     margin-bottom: auto;
+    
+    background-color: transparent;
 }
 
 /* Styling for days untill wedding */
@@ -278,14 +306,24 @@ h3{
 }
 
 #days_text{
-    font-size: 2rem;
+    font-size: 1.75rem;
 }
 
+/* Update title for phone */
+.diff{
+    font-size: 1.0rem;
+}
+    
 /* Styling for bigger screens */
 @media screen and (orientation: landscape){
     #grid{
         border: none;
         display: grid;
         grid-template-columns: 50% 50%;
+        background-color: transparent;
+    }
+    
+    #long_txt{
+        font-size: 1.1rem;
     }
 }

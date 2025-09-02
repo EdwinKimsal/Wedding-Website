@@ -1,9 +1,10 @@
+<!-- Get the user's premade party Page -->
 <!DOCTYPE html>
 <html>
     <!-- HEAD -->
     <head>
         <title>Register</title>
-        <link rel="icon" href="Images/logo.jpg">
+        <link rel="icon" href="still_pics/logo.jpg">
         <link rel="stylesheet" href="style.css">
         <script src="script.js"></script>
         <script src="jquery-3.7.1.min.js"></script>
@@ -14,21 +15,20 @@
     <body>
         <!-- Top Header -->
         <header>
-            <br>
-            <h1 class="center">Register | August 29th, 2026</h1><br>
-            <hr><br>
-        </header>
+            <br><br>
+            <h1 class="center">Register | August 29th, 2026</h1><br><br>
+        </header><hr><br><br>
 
          <!-- Main area -->
         <main id="gold_box">
             <h2>Register Party</h2><br><hr><br>
             <label for="party_input">Enter your last name and click your party:</label><br>
-            <input type="search" list="party_list" id="party_input" rows="1" maxLength="100" autoCorrect="off" autoCapitalize="off" autoComplete="off" spellCheck="false" onKeyUp="update_datalist()"/>
+            <input type="search" list="party_list" id="party_input" rows="1" maxLength="100" autoCorrect="off" autoCapitalize="off" autoComplete="off" spellCheck=false onKeyUp="update_datalist()"/>
 
-            <datalist id="party_list" autocorrect="off" autocapitalize="off" autocomplete="off">
+            <datalist id="party_list" autoCorrect="off" autoCapitalize="off" autoComplete="off" spellCheck=false>
             </datalist>
         </main><br>
 
-        <button type="button" class="gold_button" onclick="load_form()">Registster</button></a>
+        <button type="button" class="gold_button" onclick="load_form()">Registster</button>
         <a href="index.html"><button class="gold_button" type="button">Home</button></a><br><br><br><br><br><br><br>
      </body>
