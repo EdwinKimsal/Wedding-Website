@@ -46,12 +46,12 @@ function get_order($conn, $pers, $table){
 // Main function
 function main($input){
     // Create variables to get to the table
-    $server = "localhost";
-    $username = "root";
-    $password = "tw+rdNHix1";
-    $database = "wedding_rsvp";
-    $table = "guests";
-    $input_table = "invite_list";
+    $server = "server";
+    $username = "username";
+    $password = "password";
+    $database = "database";
+    $table = "table";
+    $input_table = "input_table";
 
     // Create connection
     $conn = new mysqli($server, $username, $password, $database);

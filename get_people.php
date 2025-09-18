@@ -2,11 +2,11 @@
 // Main function
 function main($input){
     // Create variables to get to the table
-    $server = "localhost";
-    $username = "root";
-    $password = "tw+rdNHix1";
-    $database = "wedding_rsvp";
-    $table = "invite_list";
+    $server = "server";
+    $username = "username";
+    $password = "password";
+    $database = "database";
+    $table = "table";
 
     // Create connection
     $conn = new mysqli($server, $username, $password, $database);
